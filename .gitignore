@@ -1,0 +1,16 @@
+.idea/
+.eclipse/
+*.iml
+*.ipr
+*.iws
+target/
+classes/
+*~
+listing/
+*.versionsBackup
+*.patch
+.settings.xml
+.project
+.classpath
+.settings
+gwt-unitCache

@@ -1,0 +1,12 @@
+Hammer GWT wrapper project
+Copyright (C) 2008-2014 Dosi Bingov (Geosparc nv)
+
+Copyright/license notices for dependent projects:
+
+GWT
+    licenseName: Apache License, Version 2.0
+    licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+
+hammer.js
+    licenseName: MIT Copyright (C) 2011-2014 by Jorik Tangelder (Eight Media)
+    licenseUrl: https://github.com/EightMedia/hammer.js/blob/master/LICENSE

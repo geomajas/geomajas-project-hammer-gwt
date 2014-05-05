@@ -1,0 +1,37 @@
+<!--
+  ~ GWT wrapper for hammer.js
+  -->
+
+<module rename-to="hammergwt_example">
+
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>7
+    <inherits name='org.geomajas.hammergwt.HammerGWT'/>
+
+<!--    <inherits name='org.geomajas.hammergwt.HammerGWT_Min'/>-->
+
+
+    <source path="client" />
+
+    <source path="client">
+		<exclude name="*Test*.java" />
+	</source>
+
+    <!--GWT logging -->
+	<!--in code use private static Logger rootLogger = Logger.getLogger("")-->
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+	<!-- BEGIN configure logging-->
+	<!-- enable loggging in module of your choice-->
+	<set-property name="gwt.logging.enabled" value="TRUE"/>
+	<!-- client side logging handler (logs in browser console) -->
+	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+	<!-- server side logging handler (logs using RPC call) -->
+	<set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" />
+    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
+    <!-- END configure logging-->
+
+    <entry-point class='org.geomajas.hammergwt.example.client.HammerGWTExample'/>
+
+
+</module>
