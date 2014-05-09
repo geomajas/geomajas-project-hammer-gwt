@@ -15,6 +15,12 @@
     <name>hammer gwt</name>
     <description>GWT wrapper for hammer.js</description>
 
+    <scm>
+        <connection>scm:git:git@github.com:geomajas/geomajas-project-hammer-gwt.git</connection>
+        <developerConnection>scm:git:git@github.com:geomajas/geomajas-project-hammer-gwt.git</developerConnection>
+        <url>https://github.com/geomajas/geomajas-project-hammer-gwt.git</url>
+    </scm>
+
     <developers>
         <developer>
             <email>d.bingov@gmail.com</email>
