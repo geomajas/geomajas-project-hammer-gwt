@@ -1,3 +1,13 @@
+/*
+ * This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+ *
+ * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+ *
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
+ * by the Geomajas Contributors License Agreement. For full licensing
+ * details, see LICENSE.txt in the project root.
+ */
 package org.geomajas.hammergwt.example.client;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -15,7 +25,6 @@ import org.geomajas.hammergwt.client.handler.HammerPinchHandler;
 import org.geomajas.hammergwt.client.handler.HammerTapHandler;
 import org.geomajas.hammergwt.client.impl.HammerTime;
 import org.geomajas.hammergwt.client.impl.HammerGWT;
-import org.geomajas.hammergwt.client.impl.option.GestureOption;
 import org.geomajas.hammergwt.client.impl.option.GestureOptions;
 
 import java.util.logging.Level;
@@ -28,7 +37,7 @@ import java.util.logging.Logger;
  * @author Dosi Bingov
  */
 public class HammerGWTExample implements EntryPoint {
-	final Label logLabel = new Label();
+	private Label logLabel = new Label();
 	private Logger remoteLogger = Logger.getLogger("");
 
 	@Override
@@ -39,7 +48,7 @@ public class HammerGWTExample implements EntryPoint {
 
 		SimplePanel panel2 = new SimplePanel();
 
-		SimplePanel panel3= new SimplePanel();
+		SimplePanel panel3 = new SimplePanel();
 		//panel.getElement().getStyle().setTop(100, Style.Unit.PX);
 
 		panel.setSize("100px", "200px");
@@ -66,8 +75,6 @@ public class HammerGWTExample implements EntryPoint {
 		RootPanel.get().add(panel3);
 		RootPanel.get().add(logLabel);
 
-		// Hammerable hammerable = new Hammerable(panel);
-
 
 		HammerGWT.on(panel, new HammerHandler() {
 			@Override
@@ -86,7 +93,7 @@ public class HammerGWTExample implements EntryPoint {
 					case DRAG:
 					default:
 						//move 20px to the right
-						int left =target.getAbsoluteLeft() + 20;
+						int left = target.getAbsoluteLeft() + 20;
 						target.getStyle().setLeft(left, Style.Unit.PX);
 						break;
 
@@ -122,7 +129,7 @@ public class HammerGWTExample implements EntryPoint {
 	}
 
 	private void log(NativeHammerEvent event) {
-		String s = "target tag name = "+event.getTarget().getNodeName() + ", scale = " + event.getScale() +
+		String s = "target tag name = " + event.getTarget().getNodeName() + ", scale = " + event.getScale() +
 				", touches = " + event.getTouches() + ", EventType = " + event.getType() +
 				", pageX = " + event.getPageX() + ", pageY = " + event.getPageY() +
 				", relativeX = " + event.getRelativeX() + ", relativeY = " + event.getRelativeY() +
@@ -131,7 +138,13 @@ public class HammerGWTExample implements EntryPoint {
 		logLabel.setText(s);
 	}
 
-	class HammerableHandler implements HammerDragHandler, HammerPinchHandler,HammerTapHandler {
+	/**
+	 * Hammer gwt events handler.
+	 *
+	 * @author Dosi Bingov
+	 *
+	 */
+	class HammerableHandler implements HammerDragHandler, HammerPinchHandler, HammerTapHandler {
 
 		@Override
 		public void onDrag(NativeHammerEvent event) {

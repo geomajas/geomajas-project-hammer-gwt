@@ -1,3 +1,13 @@
+/*
+ * This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+ *
+ * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+ *
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
+ * by the Geomajas Contributors License Agreement. For full licensing
+ * details, see LICENSE.txt in the project root.
+ */
 package org.geomajas.hammergwt.client.impl;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -25,7 +35,6 @@ public final class HammerGWT {
 	protected HammerGWT() {
 	}
 
-
 	/**
 	 * Sets hammer time options
 	 * @param gestureOptions
@@ -33,7 +42,7 @@ public final class HammerGWT {
 	private static void setOptions(GestureOption[] gestureOptions, JavaScriptObject hammerGwt) {
 		String gestureOptionsStr = "";
 
-		for (GestureOption option: gestureOptions) {
+		for (GestureOption option : gestureOptions) {
 			gestureOptionsStr = gestureOptionsStr + option + ", ";
 		}
 
@@ -71,11 +80,12 @@ public final class HammerGWT {
 	 * @param handler EventType handles all kinds of hammer event
 	 * @param eventTypes type that hammer should handle
 	 */
-	public static HammerTime on(IsWidget widget, String eventNamespace, HammerHandler handler, EventType... eventTypes) {
+	public static HammerTime on(IsWidget widget, String eventNamespace,
+			HammerHandler handler, EventType... eventTypes) {
 		//JsArrayString arr = JavaScriptObject.createArray().cast();
 		String eventTypesStr = "";
 
-		for (EventType hammerEventType: eventTypes) {
+		for (EventType hammerEventType : eventTypes) {
 			String namespace = "";
 
 			if (null != eventNamespace && !eventNamespace.isEmpty()) {
@@ -94,90 +104,125 @@ public final class HammerGWT {
 		return obj;
 	}
 
+	// CHECKSTYLE: OFF
 	private static native void off(com.google.gwt.dom.client.Element el, String event) /*-{
-        return $wnd.Hammer(el).off(event);
-    }-*/;
+
+		return $wnd.Hammer(el).off(event);
+
+	}-*/;
 
 	//TODO: make possible to set options as parameter
 	private static native void setOptions(JavaScriptObject hammertime) /*-{
-        hammertime.options.prevent_default = true;
-        hammertime.options.no_mouseevents = true;
-    }-*/;
+
+		hammertime.options.prevent_default = true;
+
+		hammertime.options.no_mouseevents = true;
+
+	}-*/;
+
 
 
 	public static native HammerTime getInstance(com.google.gwt.dom.client.Element el) /*-{
-        return $wnd.Hammer(el);
-    }-*/;
+		return $wnd.Hammer(el);
+
+	}-*/;
+
+
 
 	private static native void on(JavaScriptObject hammertime, String evenTypes, HammerHandler handler) /*-{
 
-        hammertime.on(evenTypes,
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerHandler::onHammerEvent(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		hammertime.on(evenTypes,
+
+			function(ev) {
+
+				handler.@org.geomajas.hammergwt.client.handler.HammerHandler::onHammerEvent(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+			});
+
+	}-*/;
+
 
 	public static native void onPinch(JavaScriptObject hammer, HammerPinchHandler handler) /*-{
-        hammer.on("pinch",
 
-            function(ev) {
-               handler.@org.geomajas.hammergwt.client.handler.HammerPinchHandler::onPinch(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		hammer.on("pinch",
+
+			function(ev) {
+
+				handler.@org.geomajas.hammergwt.client.handler.HammerPinchHandler::onPinch(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+			});
+
+	}-*/;
 
 	public static native void onTap(JavaScriptObject hammer, HammerTapHandler handler) /*-{
-        hammer.on("tap",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerTapHandler::onTap(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		hammer.on("tap",
 
+
+		function(ev) {
+
+			handler.@org.geomajas.hammergwt.client.handler.HammerTapHandler::onTap(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+		});
+
+	}-*/;
 
 	public static native void onDrag(JavaScriptObject hammer, HammerDragHandler handler) /*-{
-        hammer.on("drag",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerDragHandler::onDrag(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+		hammer.on("drag",
 
-                //if (typeof console == 'object') {
-					//TODO: make logging more generic
-					console.log('Drag Event', ev);
-                //}
-            });
-    }-*/;
+
+			function(ev) {
+
+				handler.@org.geomajas.hammergwt.client.handler.HammerDragHandler::onDrag(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+			});
+
+	}-*/;
 
 	public static native void onPinchIn(JavaScriptObject hammer, HammerPinchInHandler handler) /*-{
-        hammer.on("pinchin",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerPinchInHandler::onPinchIn(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		hammer.on("pinchin",
+
+
+			function(ev) {
+
+				handler.@org.geomajas.hammergwt.client.handler.HammerPinchInHandler::onPinchIn(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+			});
+
+	}-*/;
 
 	public static native void onPinchOut(JavaScriptObject hammer, HammerPinchOutHandler handler) /*-{
-        hammer.on("pinchout",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerPinchOutHandler::onPinchOut(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		hammer.on("pinchout",
+			function(ev) {
+
+				handler.@org.geomajas.hammergwt.client.handler.HammerPinchOutHandler::onPinchOut(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+
+			});
+
+	}-*/;
 
 	public static native void onDragStart(JavaScriptObject hammer, HammerDragStartHandler handler) /*-{
-        hammer.on("dragstart",
+		hammer.on("dragstart",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerDragStartHandler::onDragStart(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+		function(ev) {
+			handler.@org.geomajas.hammergwt.client.handler.HammerDragStartHandler::onDragStart(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+		});
+
+	}-*/;
 
 	public static native void onDragEnd(JavaScriptObject hammer, HammerDragEndHandler handler) /*-{
-        hammer.on("dragend",
+		hammer.on("dragend",
 
-            function(ev) {
-                handler.@org.geomajas.hammergwt.client.handler.HammerDragEndHandler::onDragEnd(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
-            });
-    }-*/;
+			function(ev) {
+				handler.@org.geomajas.hammergwt.client.handler.HammerDragEndHandler::onDragEnd(Lorg/geomajas/hammergwt/client/event/NativeHammerEvent;)(ev);
+			});
+	}-*/;
+
+
+	// CHECKSTYLE:ON
 
 }

@@ -10,6 +10,12 @@
         <module>hammer-gwt-example</module>
     </modules>
 
+    <parent>
+        <groupId>org.geomajas</groupId>
+        <artifactId>geomajas-al-parent</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
     <groupId>org.geomajas.hammergwt</groupId>
     <artifactId>geomajas-project-hammer-gwt-all</artifactId>
     <name>hammer gwt</name>
@@ -74,6 +80,9 @@
 
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <geomajas-build-tools-version>2.0.1-SNAPSHOT</geomajas-build-tools-version>
         <version-gwt>2.5.0</version-gwt>
     </properties>
+
 </project>

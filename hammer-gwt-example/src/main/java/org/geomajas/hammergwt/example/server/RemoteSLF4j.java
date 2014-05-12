@@ -1,3 +1,13 @@
+/*
+ * This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+ *
+ * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+ *
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
+ * by the Geomajas Contributors License Agreement. For full licensing
+ * details, see LICENSE.txt in the project root.
+ */
 package org.geomajas.hammergwt.example.server;
 
 import com.google.gwt.logging.server.StackTraceDeobfuscator;
@@ -14,13 +24,13 @@ import java.util.logging.LogRecord;
 public class RemoteSLF4j extends RemoteServiceServlet implements
 		RemoteLoggingService {
 	// No deobfuscator by default
-	private static StackTraceDeobfuscator deobfuscator = null;
+	private static StackTraceDeobfuscator deobfuscator;
 
 	private Logger logger = LoggerFactory.getLogger(RemoteSLF4j.class);
 
 
 
-	private static String loggerNameOverride = null;
+	private static String loggerNameOverride;
 
 	/**
 	 * Logs a Log Record which has been serialized using GWT RPC on the server.

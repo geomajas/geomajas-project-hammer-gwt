@@ -1,3 +1,13 @@
+/*
+ * This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
+ *
+ * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+ *
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
+ * by the Geomajas Contributors License Agreement. For full licensing
+ * details, see LICENSE.txt in the project root.
+ */
 package org.geomajas.hammergwt.client.event;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -5,11 +15,11 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 
 /**
- * TODO:
+ * Native javascript event of hammer js.
+ *
  * @author Dosi Bingov
  */
 public class NativeHammerEvent extends JavaScriptObject {
-
 	/**
 	 * It is required for the compiler.
 	 */
@@ -115,121 +125,70 @@ public class NativeHammerEvent extends JavaScriptObject {
 				target.getOwnerDocument().getScrollTop();
 	}
 
+	//CHECKSTYLE VISIBILITY MODIFIER: OFF
+
 	private native void stopDetect(NativeHammerEvent evt) /*-{
-        evt.gesture.stopDetect();
-    }-*/;
+		evt.gesture.stopDetect();
+	}-*/;
 
 	private native void stopPropagation(NativeHammerEvent evt) /*-{
-        evt.stopPropagation();
-    }-*/;
+		evt.stopPropagation();
+	}-*/;
 
 	private native void preventDefault(NativeHammerEvent evt) /*-{
-        evt.preventDefault();
-    }-*/;
+		evt.preventDefault();
+	}-*/;
 
 	private native void stopNativePropagation(NativeHammerEvent evt) /*-{
-        evt.gesture.stopPropagation();
-    }-*/;
+		evt.gesture.stopPropagation();
+	}-*/;
 
 	private native void preventNativeDefault(NativeHammerEvent evt) /*-{
-    	evt.gesture.preventDefault();
-    }-*/;
+		evt.gesture.preventDefault();
+	}-*/;
 
 	private native Element getTarget(NativeHammerEvent evt) /*-{
-        return evt.gesture.target;
-    }-*/;
+		return evt.gesture.target;
+	}-*/;
 
 
 	private native NativeEvent getNativeEvent(NativeHammerEvent evt) /*-{
-        return evt.gesture['srcEvent'];
-    }-*/;
+		return evt.gesture['srcEvent'];
+	}-*/;
 
 
 	private native String getPointerType(NativeHammerEvent evt) /*-{
-        return evt.gesture['pointerType'];
-    }-*/;
+		return evt.gesture['pointerType'];
+	}-*/;
 
 	private native String getType(NativeHammerEvent event) /*-{
-        return event.type;
-    }-*/;
+		return event.type;
+	}-*/;
 
 	private native double getScale(NativeHammerEvent evt) /*-{
-        return evt.gesture['scale'];
-    }-*/;
+		return evt.gesture['scale'];
+	}-*/;
 
 	private native int getTouches(NativeHammerEvent evt) /*-{
-        return evt.gesture.touches.length;
-    }-*/;
+		return evt.gesture.touches.length;
+	}-*/;
 
 	private native String getTargetTagName(NativeHammerEvent evt) /*-{
-        return evt.gesture.target.tagName;
-    }-*/;
+		return evt.gesture.target.tagName;
+	}-*/;
 
 	private native int getPageX(NativeHammerEvent evt) /*-{
-        return evt.gesture['center'].pageX;
-    }-*/;
+		return evt.gesture['center'].pageX;
+	}-*/;
+
 
 	private native int getPageY(NativeHammerEvent evt) /*-{
-        return evt.gesture['center'].pageY;
-    }-*/;
+		return evt.gesture['center'].pageY;
+	}-*/;
 
 	private native String getDirection(NativeHammerEvent evt) /*-{
-        return evt.gesture['direction'];
-    }-*/;
+		return evt.gesture['direction'];
+	}-*/;
 
-
-/*//	public static final native void onPinch(JavaScriptObject hammertime, HammerPinchHandler handler, HammerEvent event) -{
-//
-//        hammertime.on("onTap swipe onPinch drag",
-//
-//            function(ev) {
-//
-//                var properties = ['gesture','center','deltaTime','angle','direction',
-//                    'distance','deltaX','deltaY','velocityX','velocityY', 'pointerType',
-//                    'interimDirection','interimAngle',
-//                    'scale','rotation','touches','target'];
-//
-//                var values = new Array();
-//
-//                for(var i= 0,len=properties.length; i<len; i++) {
-//                    var prop = properties[i];
-//                    var value = ev.gesture[prop];
-//                    switch(prop) {
-//                        case 'center':
-//                            value = value.pageX +"x"+ value.pageY;
-//                            break;
-//                        case 'gesture':
-//                            value = ev.type;
-//                            break;
-//                        case 'target':
-//                            value = ev.gesture.target.tagName;
-//                            break;
-//                        case 'touches':
-//                            value = ev.gesture.touches.length;
-//                            break;
-//                    }
-//
-//                    values.push(value);
-//
-//
-//                }
-//
-//                ev.stopPropagation();
-//
-//                var scale =  ev.gesture['scale'] + '';
-//
-//                event.@org.geomajas.hammergwt.client.event.HammerEvent::setScale(Ljava/lang/String;)(scale);
-//
-//                event.@org.geomajas.hammergwt.client.event.HammerEvent::setEventValues(Lcom/google/gwt/core/client/JsArrayString;Lcom/google/gwt/core/client/JsArrayMixed;)(properties, values);
-//
-//                // handler.@org.geomajas.hammergwt.client.handler.HammerPinchHandler::onPinch(Lorg/geomajas/hammergwt/client/event/HammerEvent;)(event);
-//            });
-//
-//        return hammertime;
-
-
-
-
-
-//    }-;*/
+	//CHECKSTYLE VISIBILITY MODIFIER: ON
 }
