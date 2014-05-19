@@ -67,7 +67,7 @@ public enum EventType {
 	DRAGDOWN("dragdown"),
 
 
-    /**
+	/**
 	 * swipe event.
 	 */
 	SWIPE("swipe"),
@@ -75,10 +75,10 @@ public enum EventType {
 	 * swipe left event.
 	 */
 	SWIPELEFT("swipeleft"),
-    /**
-     * swipe right event.
-     */
-    SWIPERIGHT("swiperight"),
+	/**
+	 * swipe right event.
+	 */
+	SWIPERIGHT("swiperight"),
 	/**t
 	 * swipe up event.
 	 */
@@ -91,7 +91,9 @@ public enum EventType {
 
 
 
-    /**
+
+
+	/**
 	 * transform start event.
 	 */
 	TRANSFORMSTART("transformstart"),
