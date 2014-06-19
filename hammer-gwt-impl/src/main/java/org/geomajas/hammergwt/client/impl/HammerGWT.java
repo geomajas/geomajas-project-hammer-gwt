@@ -11,6 +11,7 @@
 package org.geomajas.hammergwt.client.impl;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.IsWidget;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.handler.HammerDragEndHandler;
@@ -81,6 +82,17 @@ public final class HammerGWT {
 	 * @param eventTypes type that hammer should handle
 	 */
 	public static HammerTime on(IsWidget widget, String eventNamespace,
+								HammerHandler handler, EventType... eventTypes) {
+		return on(widget.asWidget().getElement(), eventNamespace, handler, eventTypes);
+	}
+
+	/**
+	 * Add multiple hammer event.
+	 *
+	 * @param handler EventType handles all kinds of hammer event
+	 * @param eventTypes type that hammer should handle
+	 */
+	public static HammerTime on(Element element, String eventNamespace,
 			HammerHandler handler, EventType... eventTypes) {
 		//JsArrayString arr = JavaScriptObject.createArray().cast();
 		String eventTypesStr = "";
@@ -97,7 +109,7 @@ public final class HammerGWT {
 
 		eventTypesStr = eventTypesStr.substring(0, eventTypesStr.lastIndexOf(" ")); //trim last space
 
-		HammerTime obj = getInstance(widget.asWidget().getElement());
+		HammerTime obj = getInstance(element);
 
 		on(obj, eventTypesStr, handler);
 
