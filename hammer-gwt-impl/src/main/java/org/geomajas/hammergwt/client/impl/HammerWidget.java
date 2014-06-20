@@ -131,6 +131,8 @@ public abstract class HammerWidget implements IsWidget {
 	 * Unregister hammer event.
 	 *
 	 * @param eventType {@link org.geomajas.hammergwt.client.event.EventType}
+	 *
+	 * @since 1.0.0
 	 */
 	@Api
 	public void unregisterEvent(EventType eventType) {
