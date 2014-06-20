@@ -67,11 +67,12 @@ HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
 
 ```java
 
-HammerTime hammerTime3 = HammerGWT.createInstance(mywidget);
+HammerTime hammerTime = HammerGWT.createInstance(mywidget);
 
 		// Set hammer gwt options
-		hammerTime3.setOption(GestureOptions.HOLD_TIMEOUT, 2);
-		hammerTime3.setOption(GestureOptions.DRAG, false);
+		hammerTime.setOption(GestureOptions.HOLD_TIMEOUT, 2);
+		// disable drag event detection of hammer gwt
+		hammerTime.setOption(GestureOptions.DRAG, false);
 
 ```
 
@@ -121,7 +122,7 @@ Hammer GWT is maven modular project. It consists of 3 projects:
 
 + Example project - example code how to use hammer gwt .
 
-+ Documentation project - when built in target html and pdf version of hammer gwt documentation are found.
++ Documentation project - documentation of hammer gwt.
 
 To build the project you just need maven, the rest is all set up for you.
 
