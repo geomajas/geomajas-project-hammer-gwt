@@ -24,6 +24,7 @@ import org.geomajas.hammergwt.client.handler.HammerDragHandler;
 import org.geomajas.hammergwt.client.handler.HammerGWTCallback;
 import org.geomajas.hammergwt.client.handler.HammerHandler;
 import org.geomajas.hammergwt.client.handler.HammerPinchHandler;
+import org.geomajas.hammergwt.client.handler.HammerTapHandler;
 import org.geomajas.hammergwt.client.impl.HammerTime;
 import org.geomajas.hammergwt.client.impl.HammerGWT;
 import org.geomajas.hammergwt.client.impl.HammerWidget;
@@ -77,6 +78,17 @@ public class HammerGWTExample implements EntryPoint {
 
 		hammerGWTWidget.registerDragHandler(hammerableHandler);
 		hammerGWTWidget.registerPinchHandler(hammerableHandler);
+
+
+		hammerGWTWidget.registerTapHandler(new HammerTapHandler() {
+			@Override
+			public void onTap(NativeHammerEvent event) {
+				log(event);
+			}
+		});
+
+		hammerGWTWidget.unregisterEvent(EventType.TAP);
+
 
 		//hammerGWTWidget.unregisterEvent(EventType.DRAG);
 
