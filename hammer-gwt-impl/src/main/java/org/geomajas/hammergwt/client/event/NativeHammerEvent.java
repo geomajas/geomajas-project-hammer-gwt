@@ -209,6 +209,15 @@ public class NativeHammerEvent extends JavaScriptObject {
 	}
 
 	/**
+	 * Get time that event occurred.
+	 *
+	 * @return timestamp
+	 */
+	public final int getTimeStamp() {
+		return getTimeStamp(this);
+	}
+
+	/**
 	 * Get native browser event.
 	 *
 	 * @return {@link com.google.gwt.dom.client.NativeEvent}
@@ -347,6 +356,10 @@ public class NativeHammerEvent extends JavaScriptObject {
 	private native double getRotation(NativeHammerEvent evt) /*-{
 		return evt.gesture['rotation'];
 	}-*/;
+
+	private native int getTimeStamp(NativeHammerEvent evt) /*-{
+        return evt.gesture['timestamp'];
+    }-*/;
 
 	//CHECKSTYLE VISIBILITY MODIFIER: ON
 }

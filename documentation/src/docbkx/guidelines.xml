@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/. 
+	~ ~ Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium. ~
+	~ The program is available in open source according to the Apache ~ License, 
+	Version 2.0. All contributions in this program are covered ~ by the Geomajas 
+	Contributors License Agreement. For full licensing ~ details, see LICENSE.txt 
+	in the project root. -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="chapter-howto">
+	<title>Development guidelines</title>
+
+	<para>Look at the HammerGWTExample.class in the example project for a
+		basic use of the Hammer GWT wrapper.</para>
+	<para>
+		Configuration of Hammer GWT
+		<br />
+		to change the initial settings of hammer GWT use setOption method of HammerTime class
+
+        e.g.
+
+	</para>
+
+	<para>
+		You can also change these options live once the widget is created by
+		getting the wrapper object from the panel:
+		<code>
+
+  		</code>
+		Some convenience setters and getters are provided. The most important
+		one of which will be the 'getContent()'
+		which retrieves the text that
+		was typed into the editor.
+		<code>
+
+  		</code>
+	</para>
+	
+	<para>
+	If you wish to use Hammer GWT in your GTW project you should inherit HammerGWT_Min.gwt module (or HammerGWT.gwt in case you want to debug hammer js) <br />
+	Latter will include Hammer js Javascript.
+	  <code><![CDATA[
+		<?xml version="1.0" encoding="UTF-8"?>
+		<module>
+			<inherits name='com.google.gwt.user.User' />
+			<inherits name="com.google.gwt.i18n.I18N"/>
+
+            <inherits name="org.geomajas.hammergwt.HammerGWT_Min" />
+		</module>
+		]]>
+      </code>
+    </para>
+</chapter>
