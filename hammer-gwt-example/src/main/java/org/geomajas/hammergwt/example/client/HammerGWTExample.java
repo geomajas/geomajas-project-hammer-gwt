@@ -17,22 +17,23 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 import org.geomajas.hammergwt.client.handler.HammerDragHandler;
+import org.geomajas.hammergwt.client.handler.HammerGWTCallback;
 import org.geomajas.hammergwt.client.handler.HammerHandler;
 import org.geomajas.hammergwt.client.handler.HammerPinchHandler;
-import org.geomajas.hammergwt.client.handler.HammerTapHandler;
 import org.geomajas.hammergwt.client.impl.HammerTime;
 import org.geomajas.hammergwt.client.impl.HammerGWT;
+import org.geomajas.hammergwt.client.impl.HammerWidget;
 import org.geomajas.hammergwt.client.impl.option.GestureOptions;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 /**
- * Hammer GWT example.
+ * Hammer GWT example entry point.
  *
  * @author Dosi Bingov
  */
@@ -69,14 +70,28 @@ public class HammerGWTExample implements EntryPoint {
 		panel3.getElement().getStyle().setTop(50, Style.Unit.PX);
 		panel3.setSize("100px", "200px");
 
+		//Hammer GWT widget example
+		HammerGWTExampleWidget hammerGWTWidget = new HammerGWTExampleWidget();
+
+		HammerableHandler hammerableHandler = new HammerableHandler();
+
+		hammerGWTWidget.registerDragHandler(hammerableHandler);
+		hammerGWTWidget.registerPinchHandler(hammerableHandler);
+
+		//hammerGWTWidget.unregisterEvent(EventType.DRAG);
+
+		//hammerGWTWidget.registerDragHandler(hammerableHandler);
+
+		hammerGWTWidget.unregisterEvent(EventType.TAP);
 
 		RootPanel.get().add(panel);
 		RootPanel.get().add(panel2);
 		RootPanel.get().add(panel3);
+		RootPanel.get().add(hammerGWTWidget);
 		RootPanel.get().add(logLabel);
 
-
-		HammerGWT.on(panel, new HammerHandler() {
+		// add hammer gwt events
+		HammerGWT.on(HammerGWT.createInstance(panel), new HammerHandler() {
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {
 				log(event);
@@ -101,18 +116,23 @@ public class HammerGWTExample implements EntryPoint {
 			}
 		}, EventType.TAP, EventType.DRAG);
 
-
-		HammerGWT.on(panel2, new HammerHandler() {
+		// add hammer gwt events
+		HammerGWT.on(HammerGWT.createInstance(panel2), new HammerHandler() {
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {
-
-
 				log(event);
 			}
 		}, EventType.DOUBLETAP, EventType.PINCH);
 
+		HammerTime hammerTime3 = HammerGWT.createInstance(panel3.getElement());
 
-		HammerTime hammerTime = HammerGWT.on(panel3, new HammerHandler() {
+
+		// Set hammer gwt options
+		hammerTime3.setOption(GestureOptions.HOLD_TIMEOUT, 2);
+		hammerTime3.setOption(GestureOptions.DRAG, false);
+
+		// add hammer gwt events
+		HammerGWTCallback sb3 = HammerGWT.on(HammerGWT.createInstance(panel3), new HammerHandler() {
 
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {
@@ -121,10 +141,8 @@ public class HammerGWTExample implements EntryPoint {
 		}, EventType.DOUBLETAP, EventType.PINCH, EventType.DRAG);
 
 
-		// Set options example
-		hammerTime.setOption(GestureOptions.DRAG, false);
+		//HammerGWT.off(hammerTime3, EventType.DRAG, sb3);
 
-		hammerTime.setOption(GestureOptions.HOLD_TIMEOUT, 2);
 
 	}
 
@@ -132,6 +150,8 @@ public class HammerGWTExample implements EntryPoint {
 		String s = "target tag name = " + event.getTarget().getNodeName() + ", scale = " + event.getScale() +
 				", touches = " + event.getTouches() + ", EventType = " + event.getType() +
 				", pageX = " + event.getPageX() + ", pageY = " + event.getPageY() +
+				", direction = " + event.getDirection().getText() +
+				", interim direction = " + event.getInterimDirection().getText() +
 				", relativeX = " + event.getRelativeX() + ", relativeY = " + event.getRelativeY() +
 				", PointerType = " + event.getPointerType() + ", Target id = " + event.getTarget().getId();
 		remoteLogger.log(Level.SEVERE, s);
@@ -144,7 +164,7 @@ public class HammerGWTExample implements EntryPoint {
 	 * @author Dosi Bingov
 	 *
 	 */
-	class HammerableHandler implements HammerDragHandler, HammerPinchHandler, HammerTapHandler {
+	class HammerableHandler implements HammerDragHandler, HammerPinchHandler {
 
 		@Override
 		public void onDrag(NativeHammerEvent event) {
@@ -156,9 +176,29 @@ public class HammerGWTExample implements EntryPoint {
 			log(event);
 		}
 
+	}
+
+	/**
+	 * Hammer gwt widget inner class.
+	 *
+	 * @author Dosi Bingov
+	 */
+	class HammerGWTExampleWidget extends HammerWidget {
+
+		public HammerGWTExampleWidget() {
+			super();
+		}
+
 		@Override
-		public void onTap(NativeHammerEvent event) {
-			log(event);
+		public Widget createWidget() {
+			SimplePanel panel = new SimplePanel();
+			panel.setSize("100px", "200px");
+			panel.getElement().setId("hammerWidget");
+			panel.getElement().getStyle().setBackgroundColor("green");
+			panel.getElement().getStyle().setRight(0, Style.Unit.PX);
+			panel.getElement().getStyle().setTop(0, Style.Unit.PX);
+
+			return panel;
 		}
 	}
 }

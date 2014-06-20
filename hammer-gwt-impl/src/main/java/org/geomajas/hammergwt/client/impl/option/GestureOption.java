@@ -12,8 +12,8 @@ package org.geomajas.hammergwt.client.impl.option;
 
 
 /**
- * Enum-like class that uniquely represents a gesture option. Define a static instance of this class for every gesture
- * option.
+ * Enum-like class that uniquely represents a gesture option of hammer gwt.
+ * Define a static instance of this class for every gesture option.
  * 
  * @author Dosi Bingov
  * 
@@ -26,7 +26,7 @@ public class GestureOption<T> {
 	private final String name;
 
 	/**
-	 * Construct a gesture option with the following name.
+	 * Create a gesture option with a given name.
 	 *
 	 * @param name of the gesture option
 	 *
@@ -38,7 +38,7 @@ public class GestureOption<T> {
 	/**
 	 * Get the name gesture option. Uniqueness is not necessary as this is guaranteed by the class.
 	 * 
-	 * @return name Get the name of this gesture option.
+	 * @return name gesture option name.
 	 */
 	public String getName() {
 		return name;

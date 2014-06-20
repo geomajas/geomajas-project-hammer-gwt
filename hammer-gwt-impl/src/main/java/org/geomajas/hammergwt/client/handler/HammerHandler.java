@@ -15,7 +15,11 @@ import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 /**
  * Generic hammer handler.
  *
+ * To get the type of the event use {@link org.geomajas.hammergwt.client.event.NativeHammerEvent#getType()}
+ *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
 public interface HammerHandler {
 	void onHammerEvent(NativeHammerEvent event);

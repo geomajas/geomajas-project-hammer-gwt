@@ -15,6 +15,8 @@ import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 
 /**
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
 public interface HammerTapHandler {
 	void onTap(NativeHammerEvent event);

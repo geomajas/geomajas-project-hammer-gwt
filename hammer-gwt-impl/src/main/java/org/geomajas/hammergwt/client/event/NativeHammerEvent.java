@@ -15,9 +15,11 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 
 /**
- * Native javascript event of hammer js.
+ * Hammer GWT event javascript overlay type.
  *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
 public class NativeHammerEvent extends JavaScriptObject {
 	/**
@@ -25,7 +27,6 @@ public class NativeHammerEvent extends JavaScriptObject {
 	 */
 	protected NativeHammerEvent() {
 	}
-
 
 	/**
 	 * Stops Hammer from detecting any further gestures, in the current detection session.
@@ -53,7 +54,7 @@ public class NativeHammerEvent extends JavaScriptObject {
 
 	/**
 	 * Stops the native (source ev.gesture.srcEvent) event  from bubbling.
-	 * The source event could be touchstart, touchmove, mousemove etc.
+	 * The source event could be touchstart, touchmove, mousemove, click and etc.
 	 */
 	public final void stopNativePropagation() {
 		stopNativePropagation(this);
@@ -67,47 +68,168 @@ public class NativeHammerEvent extends JavaScriptObject {
 		preventNativeDefault(this);
 	}
 
+	/**
+	 * Get the type of this hammer event.
+	 *
+	 * @return {@link org.geomajas.hammergwt.client.event.EventType}
+	 */
 	public final EventType getType() {
 		return EventType.fromString(getType(this));
 	}
 
+	/**
+	 * Scaling of the touches, needs 2 touches.
+	 * @return value of scale
+	 */
 	public final double getScale() {
 		return getScale(this);
 	}
 
+	/**
+	 * Get current touches.
+	 *
+	 * @return value of current touches
+	 */
 	public final int getTouches() {
 		return getTouches(this);
 	}
 
+	/**
+	 * Get the name of the target DOM element.
+	 *
+	 * @return name of DOM element
+	 */
 	public final String getTargetTagName() {
 		return getTargetTagName(this);
 	}
 
+	/**
+	 * Get target DOM element.
+	 *
+	 * @return {@link com.google.gwt.dom.client.Element}
+	 */
 	public final Element getTarget() {
 		return getTarget(this);
 	}
 
+	/**
+	 * Get pageX.
+	 * @return page x position in pixels.
+	 */
 	public final int getPageX() {
 		return getPageX(this);
 	}
 
+	/**
+	 * Get page y.
+	 * @return page y position in pixels.
+	 */
 	public final int getPageY() {
 		return getPageY(this);
+	}
+
+	/**
+	 * Total time of the touches in the screen.
+	 *
+	 * @return total time
+	 */
+	public final int getDeltaTime() {
+		return getDeltaTime(this);
+	}
+
+	/**
+	 * The velocity on the x.
+	 * @return velocity value
+	 */
+	public final double getVelocityX() {
+		return getVelocityX(this);
+	}
+
+	/**
+	 *  The velocity on the y.
+	 * @return velocity value
+	 */
+	public final double getVelocityY() {
+		return getVelocityY(this);
+	}
+
+	/**
+	 * The angle between gesture start and end point.
+	 * @return the angle value.
+	 */
+	public final double getAngle() {
+		return getVelocityY(this);
+	}
+
+	/**
+	 * The rotation of two touches.
+	 *
+	 * @return the rotation value.
+	 */
+	public final double getRotation() {
+		return getRotation(this);
+	}
+
+	/**
+	 * Interim angle since the last movement.
+	 * @return the angle value.
+	 */
+	public final double getInterimAngle() {
+		return getVelocityY(this);
+	}
+
+	/**
+	 * Interim direction since the last movement.
+	 * @return {@link org.geomajas.hammergwt.client.event.Direction}
+	 */
+	public final Direction getInterimDirection() {
+		return Direction.fromString(getInterimDirection(this));
+	}
+
+	/**
+	 * The distance we moved from the start of the gesture.
+	 *
+	 * @return value for distance
+	 */
+	public final int getDistance() {
+		return getDistance(this);
 	}
 
 	public final PointerType getPointerType() {
 		return PointerType.fromString(getPointerType(this));
 	}
 
-	public final String getDirection() {
-		return getDirection(this);
+	/**
+	 * Get gesture direction.
+	 *
+	 * @return {@link org.geomajas.hammergwt.client.event.Direction}
+	 */
+	public final Direction getDirection() {
+		return Direction.fromString(getDirection(this));
 	}
 
+	/**
+	 * Get native browser event.
+	 *
+	 * @return {@link com.google.gwt.dom.client.NativeEvent}
+	 */
 	public final NativeEvent getNativeEvent() {
 		return getNativeEvent(this);
 	}
 
+	/**
+	 * Get native event from the first touch. this is used internal of hammer js
+	 * to calculate distances, deltaTime, scaling and etc.
+	 * @return {@link com.google.gwt.dom.client.NativeEvent}
+	 */
+	public final NativeEvent getStartEvent() {
+		return getStartEvent(this);
+	}
 
+	/**
+	 * Get relative x position on the page.
+	 * @return x position in pixels
+	 */
 	public final int getRelativeX() {
 		NativeEvent e = getNativeEvent();
 		Element target = getTarget();
@@ -116,7 +238,10 @@ public class NativeHammerEvent extends JavaScriptObject {
 				target.getOwnerDocument().getScrollLeft();
 	}
 
-
+	/**
+	 * Get relative y position on the page.
+	 * @return x position in pixels
+	 */
 	public final int getRelativeY() {
 		NativeEvent e = getNativeEvent();
 		Element target = getTarget();
@@ -151,11 +276,13 @@ public class NativeHammerEvent extends JavaScriptObject {
 		return evt.gesture.target;
 	}-*/;
 
-
 	private native NativeEvent getNativeEvent(NativeHammerEvent evt) /*-{
 		return evt.gesture['srcEvent'];
 	}-*/;
 
+	private native NativeEvent getStartEvent(NativeHammerEvent evt) /*-{
+		return evt.gesture['startEvent'];
+	}-*/;
 
 	private native String getPointerType(NativeHammerEvent evt) /*-{
 		return evt.gesture['pointerType'];
@@ -181,13 +308,44 @@ public class NativeHammerEvent extends JavaScriptObject {
 		return evt.gesture['center'].pageX;
 	}-*/;
 
-
 	private native int getPageY(NativeHammerEvent evt) /*-{
 		return evt.gesture['center'].pageY;
 	}-*/;
 
 	private native String getDirection(NativeHammerEvent evt) /*-{
 		return evt.gesture['direction'];
+	}-*/;
+
+	private native int getDeltaTime(NativeHammerEvent evt) /*-{
+		return evt.gesture['deltaTime'];
+	}-*/;
+
+	private native double getVelocityX(NativeHammerEvent evt) /*-{
+		return evt.gesture['velocityX'];
+	}-*/;
+
+	private native double getVelocityY(NativeHammerEvent evt) /*-{
+		return evt.gesture['velocityY'];
+	}-*/;
+
+	private native double getAngle(NativeHammerEvent evt) /*-{
+		return evt.gesture['angle'];
+	}-*/;
+
+	private native double getInterimAngle(NativeHammerEvent evt) /*-{
+		return evt.gesture['interimAngle'];
+	}-*/;
+
+	private native String getInterimDirection(NativeHammerEvent evt) /*-{
+		return evt.gesture['interimDirection'];
+	}-*/;
+
+	private native int getDistance(NativeHammerEvent evt) /*-{
+		return evt.gesture['distance'];
+	}-*/;
+
+	private native double getRotation(NativeHammerEvent evt) /*-{
+		return evt.gesture['rotation'];
 	}-*/;
 
 	//CHECKSTYLE VISIBILITY MODIFIER: ON

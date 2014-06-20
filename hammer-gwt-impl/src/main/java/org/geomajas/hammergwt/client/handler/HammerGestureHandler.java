@@ -15,8 +15,10 @@ import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 
 /**
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
-public interface HammerPinchOutHandler {
-	void onPinchOut(NativeHammerEvent event);
+public interface HammerGestureHandler {
+	void onGesture(NativeHammerEvent event);
 }
 

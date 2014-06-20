@@ -14,8 +14,15 @@ package org.geomajas.hammergwt.client.event;
  * Hammer gwt event type.
  *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
 public enum EventType {
+	/**
+	 * gesture event.
+	 */
+	GESTURE("gesture"),
+
 	/**
 	 * touch event.
 	 */
@@ -46,7 +53,7 @@ public enum EventType {
 	 */
 	DRAG("drag"),
 	/**
-	 * dragend evetn.
+	 * dragend event.
 	 */
 	DRAGEND("dragend"),
 	/**
@@ -65,7 +72,6 @@ public enum EventType {
 	 * drag down event.
 	 */
 	DRAGDOWN("dragdown"),
-
 
 	/**
 	 * swipe event.
@@ -87,11 +93,6 @@ public enum EventType {
 	 * swipe down event.
 	 */
 	SWIPEDOWN("swipedown"),
-
-
-
-
-
 
 	/**
 	 * transform start event.
@@ -131,7 +132,7 @@ public enum EventType {
 	/**
 	 * Get name of the event.
 	 *
-	 * @return
+	 * @return name of event as string
 	 *
 	 */
 	public String getText() {

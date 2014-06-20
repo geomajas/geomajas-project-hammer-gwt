@@ -10,11 +10,13 @@
  */
 package org.geomajas.hammergwt.client.handler;
 
-
 /**
- * TODO: finish it.
+ * Interface that extends all hammer gwt handler interfaces.
+ *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
-public interface HasAllHammerHandlers extends HammerPinchHandler, HammerPinchInHandler, HammerPinchOutHandler {
+public interface HasAllHammerHandlers extends HammerDragHandler, HammerPinchHandler, HammerTapHandler {
 	
 }

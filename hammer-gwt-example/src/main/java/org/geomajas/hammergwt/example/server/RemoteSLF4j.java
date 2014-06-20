@@ -19,6 +19,8 @@ import org.slf4j.LoggerFactory;
 import java.util.logging.LogRecord;
 
 /**
+ * Servlet used to log server side.
+ *
  * @author Dosi Bingov
  */
 public class RemoteSLF4j extends RemoteServiceServlet implements

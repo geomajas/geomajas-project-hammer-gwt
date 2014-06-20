@@ -15,8 +15,10 @@ import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 
 /**
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
-public interface HammerDragEndHandler {
-	void onDragEnd(NativeHammerEvent event);
+public interface HammerTouchHandler {
+	void onTouch(NativeHammerEvent event);
 }
 

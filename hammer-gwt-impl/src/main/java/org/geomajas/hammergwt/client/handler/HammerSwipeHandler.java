@@ -10,10 +10,15 @@
  */
 package org.geomajas.hammergwt.client.handler;
 
+import org.geomajas.hammergwt.client.event.NativeHammerEvent;
+
 
 /**
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
-public interface HasHammerPinchHandlers extends HammerPinchHandler, HammerPinchInHandler, HammerPinchOutHandler {
-
+public interface HammerSwipeHandler {
+	void onSwipe(NativeHammerEvent event);
 }
+

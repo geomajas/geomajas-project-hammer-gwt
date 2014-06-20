@@ -14,9 +14,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 import org.geomajas.hammergwt.client.impl.option.GestureOption;
 
 /**
- * Hammer js overlay javascript  object.
+ * Hammer gwt instance overlay javascript object.
  *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
 public final class HammerTime extends JavaScriptObject {
 
@@ -26,7 +28,6 @@ public final class HammerTime extends JavaScriptObject {
 	private static native void setOption(HammerTime hammerTime, boolean value, String name) /*-{
 		hammerTime.options[name] = value;
 	}-*/;
-
 
 	private static native void setOption(HammerTime hammerTime, double value, String name) /*-{
 		hammerTime.options[name] = value;
@@ -40,6 +41,17 @@ public final class HammerTime extends JavaScriptObject {
 		hammerTime.options[name] = value;
 	}-*/;
 
+	/**
+	 * Change initial settings of hammer GWT.
+	 *
+	 * @param option {@link org.geomajas.hammergwt.client.impl.option.GestureOption}
+	 * @param value T look at {@link org.geomajas.hammergwt.client.impl.option.GestureOptions}
+	 *                 interface for all possible types
+	 *
+	 * @param <T>
+	 *
+	 * @since 1.0.0
+	 */
 	public <T> void setOption(GestureOption<T> option, T value) {
 		if (value == null) {
 			throw new IllegalArgumentException("Null value passed.");
