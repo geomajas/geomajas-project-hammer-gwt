@@ -11,13 +11,16 @@
 package org.geomajas.hammergwt.client.event;
 
 
+import org.geomajas.annotation.Api;
+
 /**
- * Hammer gwt direction type.
+ * Hammer GWT  direction type.
  *
  * @author Dosi Bingov
  *
  * @since 1.0.0
  */
+@Api
 public enum Direction {
 	/**
 	 * direction up.
@@ -38,16 +41,23 @@ public enum Direction {
 
 	private String text;
 
+
 	Direction(String text) {
 		this.text = text;
 	}
 
+
+	/**
+	 * Get direction type.
+	 *
+	 * @return
+	 */
 	public String getText() {
 		return this.text;
 	}
 
 	/**
-	 * Create Direction by a given direction type.
+	 * Create hammer GTW Direction by a given direction type.
 	 *
 	 * @param type direction type
 	 * @return {@link org.geomajas.hammergwt.client.event.Direction} object or null if

@@ -12,6 +12,7 @@ package org.geomajas.hammergwt.client.impl;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import org.geomajas.annotation.Api;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.handler.HammerDoubleTapHandler;
 import org.geomajas.hammergwt.client.handler.HammerDragHandler;
@@ -44,6 +45,12 @@ public abstract class HammerWidget implements IsWidget {
 	protected Widget widget;
 	private Map<EventType, HammerGWTCallback> callbacksMap;
 
+	/**
+	 * Default constructor.
+	 *
+	 * @since 1.0.0
+	 */
+	@Api
 	public HammerWidget() {
 		widget =  createWidget();
 		hammertime = HammerGWT.createInstance(widget.getElement());
@@ -54,7 +61,10 @@ public abstract class HammerWidget implements IsWidget {
 	 * Create the widget that will have hammer gwt behavior.
 	 *
 	 * @return {@link com.google.gwt.user.client.ui.Widget}
+	 *
+	 * @since 1.0.0
 	 */
+	@Api
 	public abstract Widget createWidget();
 
 	/**
@@ -68,6 +78,7 @@ public abstract class HammerWidget implements IsWidget {
 	 *
 	 * @since 1.0.0
 	 */
+	@Api
 	public <T> void setOption(GestureOption<T> option, T value) {
 		hammertime.setOption(option, value);
 	}
@@ -121,6 +132,7 @@ public abstract class HammerWidget implements IsWidget {
 	 *
 	 * @param eventType {@link org.geomajas.hammergwt.client.event.EventType}
 	 */
+	@Api
 	public void unregisterEvent(EventType eventType) {
 
 		if (!callbacksMap.containsKey(eventType)) {

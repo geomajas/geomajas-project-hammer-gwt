@@ -11,11 +11,16 @@
 package org.geomajas.hammergwt.client.event;
 
 
+import org.geomajas.annotation.Api;
+
 /**
  * Hammer gwt pointer type.
  *
  * @author Dosi Bingov
+ *
+ * @since 1.0.0
  */
+@Api
 public enum PointerType {
 	/**
 	 * pointer type mouse.
@@ -36,10 +41,21 @@ public enum PointerType {
 		this.text = text;
 	}
 
+	/**
+	 * Get pointer type.
+	 *
+	 * @return pointer type
+	 */
 	public String getText() {
 		return this.text;
 	}
 
+	/**
+	 * Create {@link PointerType} from a given type literal.
+	 * @param text pointer type
+	 *
+	 * @return {@link PointerType}
+	 */
 	public static PointerType fromString(String text) {
 		if (text != null) {
 			for (PointerType b : PointerType.values()) {

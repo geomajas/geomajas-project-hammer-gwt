@@ -58,6 +58,11 @@
                 <version>${version-gwt}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.geomajas.project</groupId>
+                <artifactId>geomajas-project-api-annotation</artifactId>
+                <version>1.0.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

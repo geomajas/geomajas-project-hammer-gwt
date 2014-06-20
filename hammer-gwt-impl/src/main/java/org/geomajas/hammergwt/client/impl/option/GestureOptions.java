@@ -10,6 +10,8 @@
  */
 package org.geomajas.hammergwt.client.impl.option;
 
+import org.geomajas.annotation.Api;
+
 /**
  * Gesture options to change default hammer gwt settings.
  * 
@@ -18,6 +20,7 @@ package org.geomajas.hammergwt.client.impl.option;
  *
  * @since 1.0.0
  */
+@Api
 public interface GestureOptions {
 
 

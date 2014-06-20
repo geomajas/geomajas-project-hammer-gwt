@@ -12,6 +12,7 @@ package org.geomajas.hammergwt.client.impl;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.ui.IsWidget;
+import org.geomajas.annotation.Api;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.handler.HammerDoubleTapHandler;
 import org.geomajas.hammergwt.client.handler.HammerDragHandler;
@@ -79,6 +80,15 @@ public final class HammerGWT {
 		return cb;
 	}
 
+	/**
+	 * Create instance of {@link org.geomajas.hammergwt.client.impl.HammerTime} for a given
+	 *  {@link com.google.gwt.user.client.ui.IsWidget}.
+	 * @param widget
+	 * @return {@link org.geomajas.hammergwt.client.impl.HammerTime}
+	 *
+	 *  @since 1.0.0
+	 */
+	@Api
 	public static HammerTime createInstance(IsWidget widget) {
 		return createInstance(widget.asWidget().getElement());
 	}
@@ -111,6 +121,15 @@ public final class HammerGWT {
 		hammertime.options.no_mouseevents = true;
 	}-*/;
 
+	/**
+	 * Create instance of {@link org.geomajas.hammergwt.client.impl.HammerTime} for a given
+	 *  {@link  com.google.gwt.dom.client.Element}.
+	 * @param el
+	 * @return {@link org.geomajas.hammergwt.client.impl.HammerTime}
+	 *
+	 * @since 1.0.0
+	 */
+	@Api
 	public static native HammerTime createInstance(com.google.gwt.dom.client.Element el) /*-{
 		return $wnd.Hammer(el);
 

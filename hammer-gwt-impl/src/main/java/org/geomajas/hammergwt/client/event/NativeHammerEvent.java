@@ -13,6 +13,7 @@ package org.geomajas.hammergwt.client.event;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
+import org.geomajas.annotation.Api;
 
 /**
  * Hammer GWT event javascript overlay type.
@@ -21,6 +22,7 @@ import com.google.gwt.dom.client.NativeEvent;
  *
  * @since 1.0.0
  */
+@Api
 public class NativeHammerEvent extends JavaScriptObject {
 	/**
 	 * It is required for the compiler.

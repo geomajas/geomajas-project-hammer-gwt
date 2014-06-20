@@ -10,6 +10,8 @@
  */
 package org.geomajas.hammergwt.client.event;
 
+import org.geomajas.annotation.Api;
+
 /**
  * Hammer gwt event type.
  *
@@ -17,6 +19,7 @@ package org.geomajas.hammergwt.client.event;
  *
  * @since 1.0.0
  */
+@Api
 public enum EventType {
 	/**
 	 * gesture event.
@@ -130,9 +133,9 @@ public enum EventType {
 	}
 
 	/**
-	 * Get name of the event.
+	 * Get event type name.
 	 *
-	 * @return name of event as string
+	 * @return event type
 	 *
 	 */
 	public String getText() {

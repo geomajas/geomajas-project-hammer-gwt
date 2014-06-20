@@ -11,6 +11,7 @@
 package org.geomajas.hammergwt.client.impl;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import org.geomajas.annotation.Api;
 import org.geomajas.hammergwt.client.impl.option.GestureOption;
 
 /**
@@ -52,6 +53,7 @@ public final class HammerTime extends JavaScriptObject {
 	 *
 	 * @since 1.0.0
 	 */
+	@Api
 	public <T> void setOption(GestureOption<T> option, T value) {
 		if (value == null) {
 			throw new IllegalArgumentException("Null value passed.");
