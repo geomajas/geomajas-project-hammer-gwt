@@ -22,8 +22,8 @@
     <version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Geomajas Codemirror GWT wrapper documentation</name>
-	<description>Geomajas Codemirror GWT wrapper documentation</description>
+	<name>Hammer GWT wrapper documentation</name>
+	<description>Hammer GWT wrapper documentation</description>
 
 	<properties>
 		<listing.sourceDirectory>${basedir}/..</listing.sourceDirectory>
