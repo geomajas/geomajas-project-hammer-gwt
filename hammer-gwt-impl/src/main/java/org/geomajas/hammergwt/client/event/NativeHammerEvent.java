@@ -358,8 +358,8 @@ public class NativeHammerEvent extends JavaScriptObject {
 	}-*/;
 
 	private native int getTimeStamp(NativeHammerEvent evt) /*-{
-        return evt.gesture['timestamp'];
-    }-*/;
+		return evt.gesture['timestamp'];
+	}-*/;
 
 	//CHECKSTYLE VISIBILITY MODIFIER: ON
 }

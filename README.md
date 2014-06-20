@@ -1,10 +1,25 @@
 # Hammer GWT
 
-GWT library that provides multi touch and gesture support through [Hammer js](http://eightmedia.github.io/hammer.js/)
+GWT library that provides multi touch and gestures support through [Hammer js](http://eightmedia.github.io/hammer.js/)
 
 #### Getting Started
 
- Look into example project [entry point](https://github.com/geomajas/geomajas-project-hammer-gwt/blob/master/hammer-gwt-example/src/main/java/org/geomajas/hammergwt/example/client/HammerGWTExample.java)
+Look into example project [entry point](https://github.com/geomajas/geomajas-project-hammer-gwt/blob/master/hammer-gwt-example/src/main/java/org/geomajas/hammergwt/example/client/HammerGWTExample.java)
+
+##### Inherit Hammer GTW module
+
+```xml
+<module rename-to="myGWTapp">
+
+    <inherits name="com.google.gwt.user.User" />
+
+    <!-- Hammer GWT module  -->
+    <inherits name="org.geomajas.hammergwt.HammerGWT_Min" />
+
+    <source path="client" />
+</module>
+
+```
 
 ##### Register hammer events to existing GWT widget
 
@@ -43,12 +58,12 @@ HammerGWTCallback hammerCallback = HammerGWT.on(hammerTime, new HammerHandler() 
 ##### Unregister hammer events
 
 ```java
-//remove drag event of the previously created hammerTime instance
+//remove drag event of previously created HammerTime instance
 HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
 
 ```
 
-##### Change initial setting of hammer gwt
+##### Change initial setting of hammer GWT
 
 ```java
 
@@ -100,13 +115,13 @@ hammerGWTWidget.unregisterEvent(EventType.TAP);
 
 ##### Build hammer gwt project
 
-Hammer gwt is maven modular project. It consists of 3 projects:
+Hammer GWT is maven modular project. It consists of 3 projects:
 
-⋅⋅* Implementation project - hammer gwt wrapper implementation.
++ Implementation project - hammer gwt wrapper implementation.
 
-⋅⋅* Example project - example code how to use hammer gwt .
++ Example project - example code how to use hammer gwt .
 
-⋅⋅* Documentation project - when built in target html and pdf version of hammer gwt documentation are found.
++ Documentation project - when built in target html and pdf version of hammer gwt documentation are found.
 
 To build the project you just need maven, the rest is all set up for you.
 
