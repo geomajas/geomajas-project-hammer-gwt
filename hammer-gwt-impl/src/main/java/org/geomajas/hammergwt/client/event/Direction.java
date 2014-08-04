@@ -14,52 +14,58 @@ package org.geomajas.hammergwt.client.event;
 import org.geomajas.annotation.Api;
 
 /**
- * Hammer gwt pointer type.
+ * Hammer GWT  direction type.
  *
  * @author Dosi Bingov
  *
  * @since 1.0.0
  */
 @Api
-public enum PointerType {
+public enum Direction {
 	/**
-	 * pointer type mouse.
+	 * direction up.
 	 */
-	MOUSE("mouse"),
+	UP("up"),
 	/**
-	 * pointer type touch.
+	 * direction down.
 	 */
-	TOUCH("touch"),
+	DOWN("down"),
 	/**
-	 * pointer type pen.
+	 * direction left.
 	 */
-	PEN("pen");
+	LEFT("left"),
+	/**
+	 * direction right.
+	 */
+	RIGHT("right");
 
 	private String text;
 
-	PointerType(String text) {
+
+	Direction(String text) {
 		this.text = text;
 	}
 
+
 	/**
-	 * Get pointer type.
+	 * Get direction type.
 	 *
-	 * @return pointer type
+	 * @return
 	 */
 	public String getText() {
 		return this.text;
 	}
 
 	/**
-	 * Create {@link PointerType} from a given type literal.
-	 * @param text pointer type
+	 * Create hammer GTW Direction by a given direction type.
 	 *
-	 * @return {@link PointerType}
+	 * @param type direction type
+	 * @return {@link org.geomajas.hammergwt.client.event.Direction} object or null if
 	 */
-	public static PointerType fromString(String text) {
-		if (text != null) {
-			for (PointerType b : PointerType.values()) {
-				if (text.equalsIgnoreCase(b.text)) {
+	public static Direction fromString(String type) {
+		if (type != null) {
+			for (Direction b : Direction.values()) {
+				if (type.equalsIgnoreCase(b.text)) {
 					return b;
 				}
 			}

@@ -10,15 +10,17 @@
  */
 package org.geomajas.hammergwt.client.handler;
 
-import org.geomajas.hammergwt.client.event.NativeHammerEvent;
-
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * Hammer GWT callback javascript overlay type..
+ *
  * @author Dosi Bingov
  *
  * @since 1.0.0
  */
-public interface HammerDragHandler {
-	void onDrag(NativeHammerEvent event);
-}
+public final class HammerGWTCallback extends JavaScriptObject {
 
+	protected HammerGWTCallback() {
+	}
+}

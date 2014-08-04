@@ -3,17 +3,19 @@
  *
  * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
  *
- * The program is available in open source according to the GNU Affero
- * General Public License. All contributions in this program are covered
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
 package org.geomajas.hammergwt.client.impl.option;
 
 
+import org.geomajas.annotation.Api;
+
 /**
- * Enum-like class that uniquely represents a gesture option. Define a static instance of this class for every gesture
- * option.
+ * Enum-like class that uniquely represents a gesture option of hammer gwt.
+ * Define a static instance of this class for every gesture option.
  * 
  * @author Dosi Bingov
  * 
@@ -21,12 +23,13 @@ package org.geomajas.hammergwt.client.impl.option;
  *
  * @since 1.0.0
  */
+@Api
 public class GestureOption<T> {
 
 	private final String name;
 
 	/**
-	 * Construct a gesture option with the following name.
+	 * Create a gesture option with a given name.
 	 *
 	 * @param name of the gesture option
 	 *
@@ -38,14 +41,17 @@ public class GestureOption<T> {
 	/**
 	 * Get the name gesture option. Uniqueness is not necessary as this is guaranteed by the class.
 	 * 
-	 * @return name Get the name of this gesture option.
+	 * @return name gesture option name.
 	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Get value as {@link java.lang.String}.
+	 * @return {@link java.lang.String}
+	 */
 	public String getValue() {
 		return String.valueOf(this);
 	}
-
 }

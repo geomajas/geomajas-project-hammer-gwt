@@ -3,29 +3,29 @@
  *
  * Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
  *
- * The program is available in open source according to the GNU Affero
- * General Public License. All contributions in this program are covered
+ * The program is available in open source according to the Apache
+ * License, Version 2.0. All contributions in this program are covered
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
 package org.geomajas.hammergwt.client.impl.option;
 
-import java.util.InputMismatchException;
-import java.util.Map;
+import org.geomajas.annotation.Api;
 
 /**
- * Gesture options interface.
+ * Gesture options to change default hammer gwt settings.
  * 
  * @author Dosi Bingov
  *
  *
  * @since 1.0.0
  */
+@Api
 public interface GestureOptions {
 
 
 	/**
-	 * use to indicate if hammer gwt should handle drag event.
+	 * use to indicate if hammer gwt should handle drag event <b>Default true</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -33,14 +33,14 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * If true prevents native browser event beahaviour <b>Default false</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> PREVENT_DEFAULT = new GestureOption<Boolean>("prevent_default");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 *  Drag block horizontal option  <b>Default false</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -48,7 +48,7 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Drag block vertical option  <b>Default false</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -56,7 +56,7 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Drag lock to axis option  <b>Default false</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -64,7 +64,7 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Maximum touches while dragging.<b>Default value 1</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -72,7 +72,7 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Minimum distance that will cause drag event to fire.<b>Default value 10</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -80,7 +80,7 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Hold option <b>Default value true</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -88,49 +88,49 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Hold threshold <b>Default value 2</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Integer> HOLD_THRESHOLD = new GestureOption<Integer>("hold_threshold");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Hold timeout <b>Default value 500</b>.
 	 *
 	 * @since 1.0.0
 	 */
-	GestureOption<Integer> HOLD_TIMEOUT = new GestureOption<Integer>("hold_threshold");
+	GestureOption<Integer> HOLD_TIMEOUT = new GestureOption<Integer>("hold_timeout");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Should mouse events be prevented <b>Default false</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> PREVENT_MOUSEEVENTS = new GestureOption<Boolean>("prevent_mouseevents");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Release option <b>Default value true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> RELEASE = new GestureOption<Boolean>("release");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Show touches option <b>Default true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> SHOW_TOUCHES = new GestureOption<Boolean>("show_touches");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Swipe option <b>Default true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> SWIPE = new GestureOption<Boolean>("swipe");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Maximum touches while swiping <b>Default value 1</b>.
 	 *
 	 * @since 1.0.0
 	 */
@@ -138,79 +138,72 @@ public interface GestureOptions {
 
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Velocity while swiping <b>Default value 0.7</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Double> SWIPE_VELOCITY = new GestureOption<Double>("swipe_velocity");
 
 
-
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Tap option <b>Default value true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> TAP = new GestureOption<Boolean>("tap");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Tap always option <b>Default value true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> TAP_ALWAYS = new GestureOption<Boolean>("tap_always");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Maximum distance while tapping <b>Default value 10</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Integer> TAP_MAX_DISTANCE = new GestureOption<Integer>("tap_max_distance");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Maximum distance while double tapping <b>Default value 20</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Integer> DOUBLETAP_DISTANCE = new GestureOption<Integer>("doubletap_distance");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Maximum interval for double tap event to fire <b>Default value 300</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Integer> DOUBLETAP_INTERVAL = new GestureOption<Integer>("doubletap_interval");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Enable / disable touch option <b>Default true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> TOUCH = new GestureOption<Boolean>("touch");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Enable / disable transform option <b>Default true</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Boolean> TRANSFORM = new GestureOption<Boolean>("transform");
 
-	/**
-	 * If true prevents native browser event beahaviour.
-	 *
-	 * @since 1.0.0
-	 */
-	GestureOption<Boolean> TRANSFORM_ALWAYS_BLOCK = new GestureOption<Boolean>("transform_always_block");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 * Min rotation for transform event to fire <b>Default value 1</b>.
 	 *
 	 * @since 1.0.0
 	 */
 	GestureOption<Integer> TRANSFORM_MIN_ROTATION = new GestureOption<Integer>("transform_min_rotation");
 
 	/**
-	 * If true prevents native browser event beahaviour.
+	 *  Min scale for transform event to fire <b>Default value 0.01 </b>.
 	 *
 	 * @since 1.0.0
 	 */
