@@ -5,7 +5,7 @@
 <module rename-to="hammergwt_example">
 
     <inherits name="com.google.gwt.user.User"/>
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>7
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
     <inherits name='org.geomajas.hammergwt.HammerGWT'/>
 
 <!--    <inherits name='org.geomajas.hammergwt.HammerGWT_Min'/>-->

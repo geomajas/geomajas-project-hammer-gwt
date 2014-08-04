@@ -1,4 +1,4 @@
-/*! Hammer.JS - v1.1.2 - 2014-04-25
+/*! Hammer.JS - v1.1.3 - 2014-05-22
  * http://eightmedia.github.io/hammer.js
  *
  * Copyright (c) 2014 Jorik Tangelder <j.tangelder@gmail.com>;
@@ -37,7 +37,7 @@ var Hammer = function Hammer(element, options) {
  * @final
  * @type {String}
  */
-Hammer.VERSION = '1.1.2';
+Hammer.VERSION = '1.1.3';
 
 /**
  * default settings.
@@ -72,12 +72,12 @@ Hammer.defaults = {
 
         /**
          * Specifies whether and how a given region can be manipulated by the user (for instance, by panning or zooming).
-         * Used by IE10>. By default this makes the element blocking any touch event.
+         * Used by Chrome 35> and IE10>. By default this makes the element blocking any touch event.
          * @property defaults.behavior.touchAction
          * @type {String}
-         * @default: 'none'
+         * @default: 'pan-y'
          */
-        touchAction: 'none',
+        touchAction: 'pan-y',
 
         /**
          * Disables the default callout shown when you touch and hold a touch target.
@@ -122,7 +122,7 @@ Hammer.defaults = {
 };
 
 /**
- * hammer document where the base event are added at
+ * hammer document where the base events are added at
  * @property DOCUMENT
  * @type {HTMLElement}
  * @default window.document
@@ -130,14 +130,14 @@ Hammer.defaults = {
 Hammer.DOCUMENT = document;
 
 /**
- * detect support for pointer event
+ * detect support for pointer events
  * @property HAS_POINTEREVENTS
  * @type {Boolean}
  */
 Hammer.HAS_POINTEREVENTS = navigator.pointerEnabled || navigator.msPointerEnabled;
 
 /**
- * detect support for touch event
+ * detect support for touch events
  * @property HAS_TOUCHEVENTS
  * @type {Boolean}
  */
@@ -212,7 +212,7 @@ var EVENT_RELEASE = Hammer.EVENT_RELEASE = 'release';
 var EVENT_TOUCH = Hammer.EVENT_TOUCH = 'touch';
 
 /**
- * if the window event are set...
+ * if the window events are set...
  * @property READY
  * @writeOnce
  * @type {Boolean}
@@ -236,7 +236,7 @@ Hammer.plugins = Hammer.plugins || {};
 Hammer.gestures = Hammer.gestures || {};
 
 /**
- * setup event to detect gestures on the document
+ * setup events to detect gestures on the document
  * this function is called when creating an new instance
  * @private
  */
@@ -253,7 +253,7 @@ function setup() {
         Detection.register(gesture);
     });
 
-    // Add touch event on the document
+    // Add touch events on the document
     Event.onTouch(Hammer.DOCUMENT, EVENT_MOVE, Detection.detect);
     Event.onTouch(Hammer.DOCUMENT, EVENT_END, Detection.detect);
 
@@ -626,8 +626,8 @@ var Utils = Hammer.utils = {
  */
 var Event = Hammer.event = {
     /**
-     * when touch event have been fired, this is true
-     * this is used to stop mouse event
+     * when touch events have been fired, this is true
+     * this is used to stop mouse events
      * @property prevent_mouseevents
      * @private
      * @type {Boolean}
@@ -712,7 +712,7 @@ var Event = Hammer.event = {
                 self.preventMouseEvents = false;
                 self.shouldDetect = true;
             } else if(isPointer && eventType == EVENT_START) {
-                self.shouldDetect = (ev.buttons === 1);
+                self.shouldDetect = (ev.buttons === 1 || PointerEvent.matchType(POINTER_TOUCH, ev));
             // just a valid start event, but no mouse
             } else if(!isMouse && eventType == EVENT_START) {
                 self.preventMouseEvents = true;
@@ -749,7 +749,7 @@ var Event = Hammer.event = {
 
     /**
      * the core detection method
-     * this finds out what hammer-touch-event to trigger
+     * this finds out what hammer-touch-events to trigger
      * @method doDetect
      * @param {Object} ev
      * @param {String} eventType matches `EVENT_START|MOVE|END`
@@ -788,7 +788,7 @@ var Event = Hammer.event = {
         // generate some event data, some basic information
         var evData = this.collectEventData(element, triggerType, touchList, ev);
 
-        // trigger the triggerType event before the change (TOUCH, RELEASE) event
+        // trigger the triggerType event before the change (TOUCH, RELEASE) events
         // but the END event should be at last
         if(eventType != EVENT_END) {
             handler.call(Detection, evData);
@@ -818,11 +818,11 @@ var Event = Hammer.event = {
     },
 
     /**
-     * we have different event for each device/browser
+     * we have different events for each device/browser
      * determine what we need and set them in the EVENT_TYPES constant
      * the `onTouch` method is bind to these properties.
      * @method determineEventTypes
-     * @return {Object} event
+     * @return {Object} events
      */
     determineEventTypes: function determineEventTypes() {
         var types;
@@ -980,6 +980,7 @@ var PointerEvent = Hammer.PointerEvent = {
         Utils.each(this.pointers, function(pointer) {
             touchlist.push(pointer);
         });
+
         return touchlist;
     },
 
@@ -990,7 +991,7 @@ var PointerEvent = Hammer.PointerEvent = {
      * @param {Object} pointerEvent
      */
     updatePointer: function updatePointer(eventType, pointerEvent) {
-        if(eventType == EVENT_END || (eventType != EVENT_END && pointerEvent.buttons !== 1)) {
+        if(eventType == EVENT_END) {
             delete this.pointers[pointerEvent.pointerId];
         } else {
             pointerEvent.identifier = pointerEvent.pointerId;
@@ -1098,11 +1099,7 @@ var Detection = Hammer.detection = {
         Utils.each(this.gestures, function triggerGesture(gesture) {
             // only when the instance options have enabled this gesture
             if(!this.stopped && inst.enabled && instOptions[gesture.name]) {
-                // if a handler returns false, we stop with the detection
-                if(gesture.handler.call(gesture, eventData, inst) === false) {
-                    this.stopDetect();
-                    return false;
-                }
+                gesture.handler.call(gesture, eventData, inst);
             }
         }, this);
 
@@ -1276,7 +1273,7 @@ var Detection = Hammer.detection = {
 Hammer.Instance = function(element, options) {
     var self = this;
 
-    // setup HammerJS window event and register all gestures
+    // setup HammerJS window events and register all gestures
     // this also sets up the default options
     setup();
 
@@ -1334,7 +1331,7 @@ Hammer.Instance = function(element, options) {
 
 Hammer.Instance.prototype = {
     /**
-     * bind event to the instance
+     * bind events to the instance
      * @method on
      * @chainable
      * @param {String} gestures multiple gestures by splitting with a space
@@ -1350,7 +1347,7 @@ Hammer.Instance.prototype = {
     },
 
     /**
-     * unbind event to the instance
+     * unbind events to the instance
      * @method off
      * @chainable
      * @param {String} gestures
@@ -1551,13 +1548,13 @@ Hammer.Instance.prototype = {
                     triggered = true;
                 }
 
-                // trigger event
+                // trigger events
                 inst.trigger(name, ev);
                 inst.trigger(name + ev.direction, ev);
 
                 var isVertical = Utils.isVertical(ev.direction);
 
-                // block the browser event
+                // block the browser events
                 if((inst.options.dragBlockVertical && isVertical) ||
                     (inst.options.dragBlockHorizontal && !isVertical)) {
                     ev.preventDefault();
@@ -1772,7 +1769,7 @@ Hammer.gestures.Release = {
  * @module gestures
  */
 /**
- * triggers swipe event when the end velocity is above the threshold
+ * triggers swipe events when the end velocity is above the threshold
  * for best usage, set `preventDefault` (on the drag gesture) to `true`
  * ````
  *  hammertime.on("dragleft swipeleft", function(ev) {
@@ -1854,7 +1851,7 @@ Hammer.gestures.Swipe = {
             // or we can be already in dragging
             if(ev.velocityX > options.swipeVelocityX ||
                 ev.velocityY > options.swipeVelocityY) {
-                // trigger swipe event
+                // trigger swipe events
                 inst.trigger(this.name, ev);
                 inst.trigger(this.name + ev.direction, ev);
             }
@@ -1903,7 +1900,7 @@ Hammer.gestures.Swipe = {
                 break;
 
             case EVENT_END:
-                if(ev.srcEvent.type != 'touchcancel' && ev.deltaTime < options.tapMaxTime && !hasMoved) {
+                if(!Utils.inStr(ev.srcEvent.type, 'cancel') && ev.deltaTime < options.tapMaxTime && !hasMoved) {
                     // previous gesture, for the double tap since these are two different gesture detections
                     sincePrev = prev && prev.lastEvent && ev.timeStamp - prev.lastEvent.timeStamp;
                     didDoubleTap = false;
@@ -1922,6 +1919,7 @@ Hammer.gestures.Swipe = {
                         inst.trigger(current.name, ev);
                     }
                 }
+                break;
         }
     }
 
@@ -2001,7 +1999,7 @@ Hammer.gestures.Touch = {
         preventDefault: false,
 
         /**
-         * disable mouse event, so only touch (or pen!) input triggers event
+         * disable mouse events, so only touch (or pen!) input triggers events
          * @property preventMouse
          * @type {Boolean}
          * @default false

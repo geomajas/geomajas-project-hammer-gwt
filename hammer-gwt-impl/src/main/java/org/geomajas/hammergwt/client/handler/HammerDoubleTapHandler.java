@@ -18,7 +18,7 @@ import org.geomajas.hammergwt.client.event.NativeHammerEvent;
  *
  * @since 1.0.0
  */
-public interface HammerDragHandler {
-	void onDrag(NativeHammerEvent event);
+public interface HammerDoubleTapHandler {
+	void onDoubleTap(NativeHammerEvent event);
 }
 

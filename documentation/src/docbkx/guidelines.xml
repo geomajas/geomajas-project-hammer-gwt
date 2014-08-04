@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/. 
+	~ ~ Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium. ~
+	~ The program is available in open source according to the Apache ~ License, 
+	Version 2.0. All contributions in this program are covered ~ by the Geomajas 
+	Contributors License Agreement. For full licensing ~ details, see LICENSE.txt 
+	in the project root. -->
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="chapter-howto">
+  <title>Development guidelines</title>
+
+  <para>Inherit Hammer GTW module. If you wish to use Hammer GWT in your GTW
+  project you should inherit HammerGWT_Min.gwt module (or HammerGWT.gwt in
+  case you want to debug hammer js) Latter will include Hammer js Javascript
+  in the resources. <code> </code></para>
+
+  <para><code>&lt;module&gt; </code></para>
+
+  <para><code> &lt; inherits name='com.google.gwt.user.User' /&gt;
+  </code></para>
+
+  <para><code> &lt; inherits name="com.google.gwt.i18n.I18N"/&gt;
+  </code></para>
+
+  <para><code> &lt; inherits name="org.geomajas.hammergwt.HammerGWT_Min" /&gt;
+  </code></para>
+
+  <para><code>&lt;/module&gt; </code></para>
+
+  <para>Register hammer events to existing GWT widget <code> </code></para>
+
+  <para><code></code></para>
+
+  <para><code> IsWidget mywidget; </code></para>
+
+  <para><code> HammerTime hammerTime = HammerGWT.createInstance(mywidget);
+  </code></para>
+
+  <para><code>// add hammer generic hammer handler </code></para>
+
+  <para><code>// Note that only tap and drag event are handled here
+  </code></para>
+
+  <para><code>HammerGWTCallback hammerCallback = HammerGWT.on(hammerTime, new
+  HammerHandler() { </code></para>
+
+  <para><code> @Override public void onHammerEvent(NativeHammerEvent event) {
+  </code></para>
+
+  <para><code> event.preventDefault(); event.preventNativeDefault();
+  </code></para>
+
+  <para><code> Element target = event.getTarget(); </code></para>
+
+  <para><code> switch (event.getType()) { </code></para>
+
+  <para><code> case TAP: </code></para>
+
+  <para><code> //do something on tap </code></para>
+
+  <para><code> break; </code></para>
+
+  <para><code> case DRAG: </code></para>
+
+  <para><code> default: </code></para>
+
+  <para><code> //do something on drag break; </code></para>
+
+  <para><code> } </code></para>
+
+  <para><code> } }, EventType.TAP, EventType.DRAG); </code></para>
+
+  <para><code></code></para>
+
+  <para>Unregister hammer events <code> </code></para>
+
+  <para><code></code></para>
+
+  <para><code>//remove drag event of previously created HammerTime instance
+  </code></para>
+
+  <para><code></code></para>
+
+  <para><code>HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
+  </code></para>
+
+  <para><code></code></para>
+
+  <para>Change initial setting of hammer GWT <code> </code></para>
+
+  <para><code> HammerTime hammerTime3 = HammerGWT.createInstance(mywidget);
+  </code></para>
+
+  <para><code> // Set hammer gwt options
+  hammerTime3.setOption(GestureOptions.HOLD_TIMEOUT, 2); //set hold time out
+  default to 2 sec </code></para>
+
+  <para><code> // disable drag events registration </code></para>
+
+  <para><code> // so even if drag event is registered will not be handled by
+  hammer </code></para>
+
+  <para><code> hammerTime3.setOption(GestureOptions.DRAG, false); n
+  </code></para>
+
+  <para>Create Hammer GWT widget <code></code></para>
+
+  <para><code></code></para>
+
+  <para><code>// to create hammer gwt widget you should extend HammerWidget
+  class </code></para>
+
+  <para><code></code></para>
+
+  <para><code> public class HammerGWTExampleWidget extends HammerWidget {
+  </code></para>
+
+  <para><code> public HammerGWTExampleWidget() { </code></para>
+
+  <para><code> super(); </code></para>
+
+  <para><code> } </code></para>
+
+  <para><code> @Override </code></para>
+
+  <para><code> public Widget createWidget() { </code></para>
+
+  <para><code> //create gwt widget SimplePanel panel = new SimplePanel();
+  </code></para>
+
+  <para><code> panel.setSize("100px", "200px"); </code></para>
+
+  <para><code> panel.getElement().setId("hammerWidget"); return panel; } }
+  </code></para>
+
+  <para><code> // create instance of hammer gwt widget </code></para>
+
+  <para><code> HammerGWTExampleWidget myHammerWidget = new
+  HammerGWTExampleWidget(); </code></para>
+
+  <para><code> //register tap handler myHammerWidget.registerTapHandler(new
+  HammerTapHandler() { </code></para>
+
+  <para><code> @Override public void onTap(NativeHammerEvent event) {
+  </code></para>
+
+  <para><code> //do something on tap } </code></para>
+
+  <para><code> }); </code></para>
+
+  <para><code> //unregister tap event
+  hammerGWTWidget.unregisterEvent(EventType.TAP); </code></para>
+</chapter>
