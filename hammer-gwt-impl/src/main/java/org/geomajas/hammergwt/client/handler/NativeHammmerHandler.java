@@ -13,14 +13,14 @@ package org.geomajas.hammergwt.client.handler;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Hammer GWT callback javascript overlay type..
+ * Javascript handler variable (Gwt overlay type).
  *
  * @author Dosi Bingov
  *
  * @since 1.0.0
  */
-public final class HammerGWTCallback extends JavaScriptObject {
+public final class NativeHammmerHandler extends JavaScriptObject {
 
-	protected HammerGWTCallback() {
+	protected NativeHammmerHandler() {
 	}
 }

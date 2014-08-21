@@ -8,7 +8,7 @@
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
-package org.geomajas.hammergwt.client.impl;
+package org.geomajas.hammergwt.client;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -16,7 +16,7 @@ import org.geomajas.annotation.Api;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.handler.HammerDoubleTapHandler;
 import org.geomajas.hammergwt.client.handler.HammerDragHandler;
-import org.geomajas.hammergwt.client.handler.HammerGWTCallback;
+import org.geomajas.hammergwt.client.handler.NativeHammmerHandler;
 import org.geomajas.hammergwt.client.handler.HammerGestureHandler;
 import org.geomajas.hammergwt.client.handler.HammerHoldHandler;
 import org.geomajas.hammergwt.client.handler.HammerPinchHandler;
@@ -26,14 +26,14 @@ import org.geomajas.hammergwt.client.handler.HammerSwipeHandler;
 import org.geomajas.hammergwt.client.handler.HammerTapHandler;
 import org.geomajas.hammergwt.client.handler.HammerTouchHandler;
 import org.geomajas.hammergwt.client.handler.HammerTransformHandler;
-import org.geomajas.hammergwt.client.impl.option.GestureOption;
+import org.geomajas.hammergwt.client.option.GestureOption;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
- * Hammer GWT widget.
+ * Hammer GWT widget. Should be used to create widgets with hammer Gwt events.
  *
  * @author Dosi Bingov
  *
@@ -43,7 +43,7 @@ import java.util.Map;
 public abstract class HammerWidget implements IsWidget {
 	protected HammerTime hammertime;
 	protected Widget widget;
-	private Map<EventType, HammerGWTCallback> callbacksMap;
+	private Map<EventType, NativeHammmerHandler> jsHandlersMap;
 
 	/**
 	 * Default constructor.
@@ -53,12 +53,12 @@ public abstract class HammerWidget implements IsWidget {
 	@Api
 	public HammerWidget() {
 		widget =  createWidget();
-		hammertime = HammerGWT.createInstance(widget.getElement());
-		callbacksMap = new HashMap<EventType, HammerGWTCallback>();
+		hammertime = HammerGWT.create(widget.getElement());
+		jsHandlersMap = new HashMap<EventType, NativeHammmerHandler>();
 	}
 
 	/**
-	 * Create the widget that will have hammer gwt behavior.
+	 * Create Gwt widget that will have hammer gwt events.
 	 *
 	 * @return {@link com.google.gwt.user.client.ui.Widget}
 	 *
@@ -68,10 +68,10 @@ public abstract class HammerWidget implements IsWidget {
 	public abstract Widget createWidget();
 
 	/**
-	 * Change initial settings of this hammer widget.
+	 * Change initial settings of this widget.
 	 *
-	 * @param option {@link org.geomajas.hammergwt.client.impl.option.GestureOption}
-	 * @param value T look at {@link org.geomajas.hammergwt.client.impl.option.GestureOptions}
+	 * @param option {@link org.geomajas.hammergwt.client.option.GestureOption}
+	 * @param value T look at {@link org.geomajas.hammergwt.client.option.GestureOptions}
 	 *                 interface for all possible types
 	 *
 	 * @param <T>
@@ -84,64 +84,64 @@ public abstract class HammerWidget implements IsWidget {
 	}
 
 	public void registerPinchHandler(HammerPinchHandler handler) {
-		callbacksMap.put(EventType.PINCH, HammerGWT.onPinch(hammertime, handler));
+		jsHandlersMap.put(EventType.PINCH, HammerGWT.onPinch(hammertime, handler));
 	}
 
 	public void registerTapHandler(HammerTapHandler handler) {
-		callbacksMap.put(EventType.TAP, HammerGWT.onTap(hammertime, handler));
+		jsHandlersMap.put(EventType.TAP, HammerGWT.onTap(hammertime, handler));
 	}
 
 	public void registerDragHandler(HammerDragHandler handler) {
-		callbacksMap.put(EventType.DRAG, HammerGWT.onDrag(hammertime, handler));
+		jsHandlersMap.put(EventType.DRAG, HammerGWT.onDrag(hammertime, handler));
 	}
 
 	public void registerHoldHandler(HammerHoldHandler handler) {
-		callbacksMap.put(EventType.HOLD, HammerGWT.onHold(hammertime, handler));
+		jsHandlersMap.put(EventType.HOLD, HammerGWT.onHold(hammertime, handler));
 	}
 
 	public void registerDoubleTapHandler(HammerDoubleTapHandler handler) {
-		callbacksMap.put(EventType.DOUBLETAP, HammerGWT.onDoubleTap(hammertime, handler));
+		jsHandlersMap.put(EventType.DOUBLETAP, HammerGWT.onDoubleTap(hammertime, handler));
 	}
 
 	public void registerSwipeHandler(HammerSwipeHandler handler) {
-		callbacksMap.put(EventType.SWIPE, HammerGWT.onSwipe(hammertime, handler));
+		jsHandlersMap.put(EventType.SWIPE, HammerGWT.onSwipe(hammertime, handler));
 	}
 
 	public void registerTransformHandler(HammerTransformHandler handler) {
-		callbacksMap.put(EventType.TRANSFORM, HammerGWT.onTransform(hammertime, handler));
+		jsHandlersMap.put(EventType.TRANSFORM, HammerGWT.onTransform(hammertime, handler));
 	}
 
 	public void registerRotateHandler(HammerRotateHandler handler) {
-		callbacksMap.put(EventType.ROTATE, HammerGWT.onRotate(hammertime, handler));
+		jsHandlersMap.put(EventType.ROTATE, HammerGWT.onRotate(hammertime, handler));
 	}
 
 	public void registerTouchHandler(HammerTouchHandler handler) {
-		callbacksMap.put(EventType.TOUCH, HammerGWT.onTouch(hammertime, handler));
+		jsHandlersMap.put(EventType.TOUCH, HammerGWT.onTouch(hammertime, handler));
 	}
 
 	public void registerReleaseHandler(HammerReleaseHandler handler) {
-		callbacksMap.put(EventType.RELEASE, HammerGWT.onRelease(hammertime, handler));
+		jsHandlersMap.put(EventType.RELEASE, HammerGWT.onRelease(hammertime, handler));
 	}
 
 	public void registerGestureHandler(HammerGestureHandler handler) {
-		callbacksMap.put(EventType.GESTURE, HammerGWT.onGesture(hammertime, handler));
+		jsHandlersMap.put(EventType.GESTURE, HammerGWT.onGesture(hammertime, handler));
 	}
 
 	/**
-	 * Unregister hammer event.
+	 * Unregister Hammer Gwt handler.
 	 *
 	 * @param eventType {@link org.geomajas.hammergwt.client.event.EventType}
 	 *
 	 * @since 1.0.0
 	 */
 	@Api
-	public void unregisterEvent(EventType eventType) {
+	public void unregisterHandler(EventType eventType) {
 
-		if (!callbacksMap.containsKey(eventType)) {
+		if (!jsHandlersMap.containsKey(eventType)) {
 			return;
 		}
 
-		HammerGWT.off(hammertime, eventType, (HammerGWTCallback) callbacksMap.remove(eventType));
+		HammerGWT.off(hammertime, eventType, (NativeHammmerHandler) jsHandlersMap.remove(eventType));
 	}
 
 	@Override

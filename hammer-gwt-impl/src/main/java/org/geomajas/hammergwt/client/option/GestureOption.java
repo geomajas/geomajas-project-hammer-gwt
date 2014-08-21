@@ -8,7 +8,7 @@
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
-package org.geomajas.hammergwt.client.impl.option;
+package org.geomajas.hammergwt.client.option;
 
 
 import org.geomajas.annotation.Api;

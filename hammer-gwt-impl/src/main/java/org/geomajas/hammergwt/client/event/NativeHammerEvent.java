@@ -197,6 +197,24 @@ public class NativeHammerEvent extends JavaScriptObject {
 		return getDistance(this);
 	}
 
+	/**
+	 * The distance we moved on the 'X' axis from the start of the gesture.
+	 *
+	 * @return value for distance
+	 */
+	public final int getDeltaX() {
+		return getDeltaX(this);
+	}
+
+	/**
+	 * The distance we moved on the 'Y' axis from the start of the gesture.
+	 *
+	 * @return value for distance
+	 */
+	public final int getDeltaY() {
+		return getDeltaY(this);
+	}
+
 	public final PointerType getPointerType() {
 		return PointerType.fromString(getPointerType(this));
 	}
@@ -349,6 +367,14 @@ public class NativeHammerEvent extends JavaScriptObject {
 
 	private native String getInterimDirection(NativeHammerEvent evt) /*-{
 		return evt.gesture['interimDirection'];
+	}-*/;
+
+	private native int getDeltaX(NativeHammerEvent evt) /*-{
+		return evt.gesture['deltaX'];
+	}-*/;
+
+	private native int getDeltaY(NativeHammerEvent evt) /*-{
+		return evt.gesture['deltaY'];
 	}-*/;
 
 	private native int getDistance(NativeHammerEvent evt) /*-{

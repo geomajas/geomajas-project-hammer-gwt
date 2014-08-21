@@ -8,14 +8,14 @@
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
-package org.geomajas.hammergwt.client.impl;
+package org.geomajas.hammergwt.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import org.geomajas.annotation.Api;
-import org.geomajas.hammergwt.client.impl.option.GestureOption;
+import org.geomajas.hammergwt.client.option.GestureOption;
 
 /**
- * Hammer gwt instance overlay javascript object.
+ * Hammer time object. Gwt overlay instance for Hammer js javascript variable.
  *
  * @author Dosi Bingov
  *
@@ -43,10 +43,10 @@ public final class HammerTime extends JavaScriptObject {
 	}-*/;
 
 	/**
-	 * Change initial settings of hammer GWT.
+	 * Change the initial settings of hammer Gwt.
 	 *
-	 * @param option {@link org.geomajas.hammergwt.client.impl.option.GestureOption}
-	 * @param value T look at {@link org.geomajas.hammergwt.client.impl.option.GestureOptions}
+	 * @param option {@link org.geomajas.hammergwt.client.option.GestureOption}
+	 * @param value T look at {@link org.geomajas.hammergwt.client.option.GestureOptions}
 	 *                 interface for all possible types
 	 *
 	 * @param <T>
@@ -61,7 +61,6 @@ public final class HammerTime extends JavaScriptObject {
 
 		if (value instanceof Boolean) {
 			setOption(this, (Boolean) value, option.getName());
-
 		} else if (value instanceof Integer) {
 			setOption(this, (Integer) value, option.getName());
 

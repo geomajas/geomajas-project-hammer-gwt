@@ -33,7 +33,7 @@ public enum PointerType {
 	/**
 	 * pointer type pen.
 	 */
-	PEN("pen");
+	PEN("pen"), ;
 
 	private String text;
 

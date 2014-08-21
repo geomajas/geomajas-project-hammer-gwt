@@ -10,10 +10,8 @@
 <chapter id="chapter-howto">
   <title>Development guidelines</title>
 
-  <para>Inherit Hammer GTW module. If you wish to use Hammer GWT in your GTW
-  project you should inherit HammerGWT_Min.gwt module (or HammerGWT.gwt in
-  case you want to debug hammer js) Latter will include Hammer js Javascript
-  in the resources. <code> </code></para>
+  <para>Inherit Hammer GTW module. To use Hammer GWT in your
+      project you should inherit HammerGWT.gwt module. <code> </code></para>
 
   <para><code>&lt;module&gt; </code></para>
 
@@ -23,7 +21,7 @@
   <para><code> &lt; inherits name="com.google.gwt.i18n.I18N"/&gt;
   </code></para>
 
-  <para><code> &lt; inherits name="org.geomajas.hammergwt.HammerGWT_Min" /&gt;
+  <para><code> &lt; inherits name="org.geomajas.hammergwt.HammerGWT" /&gt;
   </code></para>
 
   <para><code>&lt;/module&gt; </code></para>
@@ -32,21 +30,21 @@
 
   <para><code></code></para>
 
-  <para><code> IsWidget mywidget; </code></para>
+  <para><code> IsWidget myWidget; </code></para>
 
-  <para><code> HammerTime hammerTime = HammerGWT.createInstance(mywidget);
+  <para><code> HammerTime hammerTime = HammerGWT.create(myWidget);
   </code></para>
 
-  <para><code>// add hammer generic hammer handler </code></para>
+  <para><code>// add  generic hammer handler </code></para>
 
   <para><code>// Note that only tap and drag event are handled here
   </code></para>
 
-  <para><code>HammerGWTCallback hammerCallback = HammerGWT.on(hammerTime, new
+  <para><code>NativeHammerHandler hammerHandler = HammerGWT.on(hammerTime, new
   HammerHandler() { </code></para>
 
   <para><code> @Override public void onHammerEvent(NativeHammerEvent event) {
-  </code></para>
+  </code></para>v
 
   <para><code> event.preventDefault(); event.preventNativeDefault();
   </code></para>
@@ -82,14 +80,14 @@
 
   <para><code></code></para>
 
-  <para><code>HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
+  <para><code>HammerGWT.off(hammerTime, EventType.DRAG, hammerHandler);
   </code></para>
 
   <para><code></code></para>
 
   <para>Change initial setting of hammer GWT <code> </code></para>
 
-  <para><code> HammerTime hammerTime3 = HammerGWT.createInstance(mywidget);
+  <para><code> HammerTime hammerTime3 = HammerGWT.create(myWidget);
   </code></para>
 
   <para><code> // Set hammer gwt options
@@ -149,6 +147,6 @@
 
   <para><code> }); </code></para>
 
-  <para><code> //unregister tap event
-  hammerGWTWidget.unregisterEvent(EventType.TAP); </code></para>
+  <para><code> //unregister tap event handler
+  hammerGWTWidget.unregisterHandler(EventType.TAP); </code></para>
 </chapter>

@@ -14,7 +14,7 @@ Look into example project [entry point](https://github.com/geomajas/geomajas-pro
     <inherits name="com.google.GWT.user.User" />
 
     <!-- Hammer GWT module  -->
-    <inherits name="org.geomajas.hammergwt.HammerGWT_Min" />
+    <inherits name="org.geomajas.hammergwt.HammerGWT" />
 
     <source path="client" />
 </module>
@@ -25,13 +25,13 @@ Look into example project [entry point](https://github.com/geomajas/geomajas-pro
 
 ```java
 
-IsWidget mywidget;
+SimplePanel myWidget = new SimplePanel();
 
-HammerTime hammerTime = HammerGWT.createInstance(mywidget);
+HammerTime hammerTime = HammerGWT.create(myWidget);
 
 // add hammer generic hammer handler
 // Note that only tap and drag event are handled here
-HammerGWTCallback hammerCallback = HammerGWT.on(hammerTime, new HammerHandler() {
+NativeHammmerHandler hammerHandler = HammerGWT.on(hammerTime, new HammerHandler() {
     @Override
     public void onHammerEvent(NativeHammerEvent event) {
         event.preventDefault();
@@ -59,7 +59,7 @@ HammerGWTCallback hammerCallback = HammerGWT.on(hammerTime, new HammerHandler() 
 
 ```java
 //remove drag event of previously created HammerTime instance
-HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
+HammerGWT.off(hammerTime, EventType.DRAG, hammerHandler);
 
 ```
 
@@ -67,7 +67,7 @@ HammerGWT.off(hammerTime, EventType.DRAG, hammerCallback);
 
 ```java
 
-HammerTime hammerTime = HammerGWT.createInstance(mywidget);
+HammerTime hammerTime = HammerGWT.create(myWidget);
 
 		// Set hammer GWT options
 		hammerTime.setOption(GestureOptions.HOLD_TIMEOUT, 2);
@@ -110,8 +110,8 @@ myHammerWidget.registerTapHandler(new HammerTapHandler() {
 			}
 		});
 
-//unregister tap event
-hammerGWTWidget.unregisterEvent(EventType.TAP);
+//unregister tap handler
+hammerGWTWidget.unregisterHandler(EventType.TAP);
 ```
 
 ##### Build hammer GWT project
@@ -126,7 +126,7 @@ Hammer GWT is maven modular project. It consists of 3 projects:
 
 To build the project you just need maven, the rest is all set up for you.
 
-After you cloned hammer GWT from github go to the paren project and type
+After you cloned hammer GWT from github go to the parent project and type
 
 ```
 mvn clean install;
@@ -138,8 +138,7 @@ mvn clean install;
 Go to the root of example project and type
 
 ```
-cd example
-mvn clean install jetty:run
+mvn jetty:run
 
 ```
 

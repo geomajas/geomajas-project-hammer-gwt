@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .eventTarget {
+            height: 50%;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: lightblue;
+            font-weight: bold;
+            color: white;
+            border: 1px grey;
+            -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+            animation: mymove 5s infinite;
+            text-align: center;
+            vertical-align: middle;
+
+        }
+
+        /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            50% {box-shadow:  0px 0px 18px 0px grey;}
+        }
+
+        /* Standard syntax */
+        @keyframes mymove {
+            50% {box-shadow:  0px 0px 18px 0px grey;}
+        }
+
+
+    </ui:style>
+
+   <g:FlowPanel>
+        <g:SimplePanel ui:field="eventsPanel" styleName="{style.eventTarget}">
+
+        </g:SimplePanel>
+
+        <g:Label ui:field="logArea" styleName="log" />
+   </g:FlowPanel>
+
+</ui:UiBinder>

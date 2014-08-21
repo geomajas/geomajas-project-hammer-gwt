@@ -37,7 +37,7 @@ public enum Direction {
 	/**
 	 * direction right.
 	 */
-	RIGHT("right");
+	RIGHT("right"), ;
 
 	private String text;
 

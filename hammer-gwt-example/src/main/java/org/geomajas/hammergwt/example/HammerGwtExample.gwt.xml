@@ -5,11 +5,13 @@
 <module rename-to="hammergwt_example">
 
     <inherits name="com.google.gwt.user.User"/>
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>7
-    <inherits name='org.geomajas.hammergwt.HammerGWT'/>
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name='org.geomajas.hammergwt.HammerGwt'/>
 
-<!--    <inherits name='org.geomajas.hammergwt.HammerGWT_Min'/>-->
-
+    <!-- Superdev -->
+    <add-linker name="xsiframe" />
+    <set-configuration-property name="devModeRedirectEnabled" value="true" />
+    <set-property name="compiler.useSourceMaps" value="true"/>
 
     <source path="client" />
 
@@ -31,7 +33,7 @@
     <set-property name="gwt.logging.popupHandler" value="DISABLED" />
     <!-- END configure logging-->
 
-    <entry-point class='org.geomajas.hammergwt.example.client.HammerGWTExample'/>
+    <entry-point class='org.geomajas.hammergwt.example.client.HammerGwtExample'/>
 
 
 </module>
