@@ -4,7 +4,7 @@ GWT library that provides multi touch and gestures support through [Hammer js](h
 
 #### Getting Started
 
-Look into example project [entry point](https://github.com/geomajas/geomajas-project-hammer-GWT/blob/master/hammer-GWT-example/src/main/java/org/geomajas/hammergwt/example/client/HammerGWTExample.java)
+Look into [gwt panels sample](https://github.com/geomajas/geomajas-project-hammer-gwt/blob/master/hammer-gwt-example/src/main/java/org/geomajas/hammergwt/example/client/PanelsSample.java) to get familiar with the syntax of Hammer Gwt
 
 ##### Inherit Hammer GTW module
 
