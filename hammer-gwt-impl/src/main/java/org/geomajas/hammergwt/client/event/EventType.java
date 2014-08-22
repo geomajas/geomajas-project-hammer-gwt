@@ -147,7 +147,7 @@ public enum EventType {
 	 *
 	 * @param text event name
 	 *
-	 * @return
+	 * @return {@link EventType} or null if there is no type found.
 	 */
 	public static EventType fromString(String text) {
 		if (text != null) {

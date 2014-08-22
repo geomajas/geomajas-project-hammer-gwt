@@ -71,7 +71,7 @@ public final class HammerGWT {
 	 * @param handler {@link HammerHandler} generic hammer handler that will handle all event types.
 	 * @param eventTypes multiple event types.
 	 *
-	 * @return {@linkHammerGwtCallback}
+	 * @return {@link NativeHammmerHandler}
 	 */
 	public static NativeHammmerHandler on(HammerTime hammerTime, HammerHandler handler, EventType... eventTypes) {
 		NativeHammmerHandler cb = on(hammerTime, createEvenTypesString(null, eventTypes), handler);
@@ -85,7 +85,7 @@ public final class HammerGWT {
 	 * @param eventNamespace hammer gwt namespace.
 	 * @param handler {@link HammerHandler} generic hammer handler that will handle all event types.
 	 * @param eventTypes multiple event types.
-	 * @return {@linkHammerGwtCallback}.
+	 * @return {@link NativeHammmerHandler}.
 	 */
 	public static NativeHammmerHandler on(HammerTime hammerTime, String eventNamespace,
 			HammerHandler handler, EventType... eventTypes) {

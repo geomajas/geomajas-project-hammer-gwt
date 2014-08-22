@@ -50,7 +50,7 @@ public enum Direction {
 	/**
 	 * Get direction type.
 	 *
-	 * @return
+	 * @return enum text.
 	 */
 	public String getText() {
 		return this.text;
