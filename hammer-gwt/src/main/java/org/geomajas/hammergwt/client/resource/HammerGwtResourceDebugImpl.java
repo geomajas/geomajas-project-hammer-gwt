@@ -8,7 +8,7 @@
  * by the Geomajas Contributors License Agreement. For full licensing
  * details, see LICENSE.txt in the project root.
  */
-package org.geomajas.hammergwt.client;
+package org.geomajas.hammergwt.client.resource;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -19,23 +19,30 @@ import com.google.gwt.resources.client.TextResource;
  *
  * @author Dosi Bingov
  */
-public interface HammerGwtClientBundle extends ClientBundle {
+public class HammerGwtResourceDebugImpl implements HammerGwtResource {
 
-	HammerGwtClientBundle INSTANCE = GWT.create(HammerGwtClientBundle.class);
+	@Override
+	public String getHammerJsScript() {
+		HammerJsResource hammerJs = GWT.create(HammerJsResource.class);
 
-	/**
-	 * Get minimized version of Hammer js.
-	 *
-	 * @return Javascript {@link TextResource}.
-	 */
-	@Source("hammerjs/hammer.min.js")
-	TextResource hammerJs();
+		return hammerJs.hammerJs().getText();
+	}
 
 	/**
-	 * Get source of Hammer js.
+	 * Gwt client bundle.
 	 *
-	 * @return  Javascript {@link TextResource}.
+	 * @author Dosi Bingov
 	 */
-	@Source("hammerjs/hammer.js")
-	TextResource hammerJsSrc();
+	interface HammerJsResource extends ClientBundle {
+
+		/**
+		 * Get source version of Hammer JS.
+		 *
+		 * @return Javascript {@link com.google.gwt.resources.client.TextResource}.
+		 */
+		@Source("org/geomajas/hammergwt/public/js/hammer.js")
+		TextResource hammerJs();
+
+	}
+
 }

@@ -19,7 +19,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import org.geomajas.hammergwt.client.HammerGWT;
+import org.geomajas.hammergwt.client.HammerGwt;
 import org.geomajas.hammergwt.client.HammerTime;
 import org.geomajas.hammergwt.client.HammerWidget;
 import org.geomajas.hammergwt.client.event.EventType;
@@ -89,7 +89,7 @@ public class PanelsSample implements TabSample {
 		layout.add(pinkPanel);
 
 		// add hammer gwt events
-		HammerGWT.on(HammerGWT.create(pinkPanel), new HammerHandler() {
+		HammerGwt.on(HammerGwt.create(pinkPanel), new HammerHandler() {
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {
 				log(event);
@@ -119,7 +119,7 @@ public class PanelsSample implements TabSample {
 		}, EventType.TAP, EventType.DRAG);
 
 		// add hammer gwt events
-		HammerGWT.on(HammerGWT.create(orangePanel), new HammerHandler() {
+		HammerGwt.on(HammerGwt.create(orangePanel), new HammerHandler() {
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {
 				log(event);
@@ -145,14 +145,14 @@ public class PanelsSample implements TabSample {
 			}
 		}, EventType.DRAG, EventType.PINCH);
 
-		HammerTime hammerTime3 = HammerGWT.create(blackPanel.getElement());
+		HammerTime hammerTime3 = HammerGwt.create(blackPanel.getElement());
 
 		// Set hammer gwt options
 		hammerTime3.setOption(GestureOptions.HOLD_TIMEOUT, 2);
 		hammerTime3.setOption(GestureOptions.DRAG, false);
 
 		// add hammer gwt events
-		NativeHammmerHandler sb3 = HammerGWT.on(HammerGWT.create(blackPanel), new HammerHandler() {
+		NativeHammmerHandler sb3 = HammerGwt.on(HammerGwt.create(blackPanel), new HammerHandler() {
 
 			@Override
 			public void onHammerEvent(NativeHammerEvent event) {

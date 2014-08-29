@@ -16,7 +16,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import org.geomajas.hammergwt.client.HammerGWT;
+import org.geomajas.hammergwt.client.HammerGwt;
 import org.geomajas.hammergwt.client.event.EventType;
 import org.geomajas.hammergwt.client.event.NativeHammerEvent;
 import org.geomajas.hammergwt.client.handler.HammerHandler;
@@ -54,14 +54,15 @@ public class EventLoggerSample implements TabSample {
 		eventsPanel.getElement().setId("eventsPanel");
 		layout.getElement().setId("eventsLoggerTab");
 		// add hammer gwt events
-		HammerGWT.on(HammerGWT.create(eventsPanel), new HammerHandler() {
-			@Override
-			public void onHammerEvent(NativeHammerEvent event) {
-				log(event);
-			}
-		}, EventType.DOUBLETAP, EventType.PINCH, EventType.TAP, EventType.TRANSFORM, EventType.DRAG, EventType.HOLD,
-				EventType.DRAGLEFT, EventType.DRAGRIGHT, EventType.DRAGDOWN, EventType.DRAGUP, EventType.DRAGEND,
-				EventType.SWIPE, EventType.RELEASE, EventType.PINCHIN, EventType.PINCHOUT);
+		HammerGwt.on(HammerGwt.create(eventsPanel), new HammerHandler() {
+					@Override
+					public void onHammerEvent(NativeHammerEvent event) {
+						log(event);
+					}
+				}, EventType.DOUBLETAP, EventType.PINCH, EventType.TAP, EventType.TRANSFORM, EventType.DRAG,
+				EventType.HOLD, EventType.DRAGLEFT, EventType.DRAGRIGHT, EventType.DRAGDOWN, EventType.DRAGUP,
+				EventType.DRAGEND, EventType.SWIPE, EventType.RELEASE, EventType.PINCHIN, EventType.PINCHOUT
+		);
 
 	}
 

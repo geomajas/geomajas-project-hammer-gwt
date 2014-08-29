@@ -1,19 +1,23 @@
 <!--
-  ~ Hammer Gwt example module
+  ~ GWT wrapper for hammer js version '1.1.3'. Include this module if you want to debug the source of Hammer JS.
   -->
 
-<module rename-to="hammergwt_example">
+<module>
 
     <inherits name="com.google.gwt.user.User"/>
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-    <inherits name='org.geomajas.hammergwt.HammerGwt'/>
-
 
     <source path="client" />
 
     <source path="client">
 		<exclude name="*Test*.java" />
 	</source>
+
+    <!--! note if this script tag is removed hammer js will be still included with gwt script injection-->
+    <script src="js/hammer.js"/>
+
+    <replace-with class="org.geomajas.hammergwt.client.resource.HammerGwtResourceDebugImpl">
+        <when-type-is class="org.geomajas.hammergwt.client.resource.HammerGwtResource" />
+    </replace-with>
 
     <!--GWT logging -->
 	<!--in code use private static Logger rootLogger = Logger.getLogger("")-->
@@ -23,13 +27,9 @@
 	<!-- enable loggging in module of your choice-->
 	<set-property name="gwt.logging.enabled" value="TRUE"/>
 	<!-- client side logging handler (logs in browser console) -->
-	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
 	<!-- server side logging handler (logs using RPC call) -->
 	<set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" />
-    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
     <!-- END configure logging-->
-
-    <entry-point class='org.geomajas.hammergwt.example.client.HammerGwtExample'/>
-
 
 </module>

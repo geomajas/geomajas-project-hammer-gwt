@@ -1,5 +1,5 @@
-org.geomajas.hammergwt.client.HammerGWT:static HammerTime create(Element, ):1.0.0
-org.geomajas.hammergwt.client.HammerGWT:static HammerTime create(IsWidget, ):1.0.0
+org.geomajas.hammergwt.client.HammerGwt:static HammerTime create(Element, ):1.0.0
+org.geomajas.hammergwt.client.HammerGwt:static HammerTime create(IsWidget, ):1.0.0
 org.geomajas.hammergwt.client.HammerTime:void setOption(GestureOption<T>, T, ):1.0.0
 org.geomajas.hammergwt.client.HammerWidget:HammerWidget():1.0.0
 org.geomajas.hammergwt.client.HammerWidget:Widget createWidget():1.0.0

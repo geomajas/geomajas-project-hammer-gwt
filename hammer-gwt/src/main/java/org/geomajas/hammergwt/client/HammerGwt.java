@@ -10,6 +10,7 @@
  */
 package org.geomajas.hammergwt.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.Element;
@@ -29,20 +30,21 @@ import org.geomajas.hammergwt.client.handler.HammerSwipeHandler;
 import org.geomajas.hammergwt.client.handler.HammerTapHandler;
 import org.geomajas.hammergwt.client.handler.HammerTouchHandler;
 import org.geomajas.hammergwt.client.handler.HammerTransformHandler;
+import org.geomajas.hammergwt.client.resource.HammerGwtResource;
 
 /**
  * Hammer GWT implementation.
  *
  * @author Dosi Bingov
  *
- * @version 1.0
+ * @version 1.0.0.0
  */
-public final class HammerGWT {
+public final class HammerGwt {
 
 	/**
 	 * Protected constructor.
 	 */
-	protected HammerGWT() {
+	protected HammerGwt() {
 	}
 
 	/**
@@ -96,15 +98,14 @@ public final class HammerGWT {
 	}
 
 	private static void injectScript() {
-		if (!isInjected()) {
-			String jsUrl = HammerGwtClientBundle.INSTANCE.hammerJs().getText();
-
-			if (USE_JS_SOURCE) {
-				jsUrl = HammerGwtClientBundle.INSTANCE.hammerJsSrc().getText();
-			}
+		if (!isHammerJsDefined()) {
+			//deffered binding
+			HammerGwtResource hammerGwtResource = GWT.create(HammerGwtResource.class);
+			String hammerJsScript = hammerGwtResource.getHammerJsScript();
 
 			//inject hammer js javascript at top level window object
-			ScriptInjector.fromString(jsUrl).setWindow(ScriptInjector.TOP_WINDOW).inject();
+			ScriptInjector.fromString(hammerJsScript).
+					setWindow(ScriptInjector.TOP_WINDOW).setRemoveTag(false).inject();
 		}
 	}
 
@@ -151,12 +152,7 @@ public final class HammerGWT {
 
 	// CHECKSTYLE: OFF
 
-	/**
-	 * By default minimized version of hammer Js javascript is injected.
-	 */
-	public static boolean USE_JS_SOURCE = false;
-
-	private static native boolean isInjected() /*-{
+	private static native boolean isHammerJsDefined() /*-{
 		if (!(typeof $wnd.Hammer === "undefined") && !(null===$wnd.Hammer)) {
             return true;
         }

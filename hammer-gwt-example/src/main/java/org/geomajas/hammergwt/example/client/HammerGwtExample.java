@@ -14,7 +14,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
-import org.geomajas.hammergwt.client.HammerGWT;
 
 /**
  * Hammer GWT example entry point.
@@ -26,8 +25,6 @@ public class HammerGwtExample implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		HammerGWT.USE_JS_SOURCE = true;
-
 		// Create a tab panel
 		tabPanel = new TabLayoutPanel(2.5, Style.Unit.EM);
 		tabPanel.setAnimationDuration(1000);

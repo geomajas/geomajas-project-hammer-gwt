@@ -37,7 +37,7 @@ import java.util.Map;
  *
  * @author Dosi Bingov
  *
- * @version 1.0
+ * @version 1.0.0
  */
 
 public abstract class HammerWidget implements IsWidget {
@@ -53,7 +53,7 @@ public abstract class HammerWidget implements IsWidget {
 	@Api
 	public HammerWidget() {
 		widget =  createWidget();
-		hammertime = HammerGWT.create(widget.getElement());
+		hammertime = HammerGwt.create(widget.getElement());
 		jsHandlersMap = new HashMap<EventType, NativeHammmerHandler>();
 	}
 
@@ -84,47 +84,47 @@ public abstract class HammerWidget implements IsWidget {
 	}
 
 	public void registerPinchHandler(HammerPinchHandler handler) {
-		jsHandlersMap.put(EventType.PINCH, HammerGWT.onPinch(hammertime, handler));
+		jsHandlersMap.put(EventType.PINCH, HammerGwt.onPinch(hammertime, handler));
 	}
 
 	public void registerTapHandler(HammerTapHandler handler) {
-		jsHandlersMap.put(EventType.TAP, HammerGWT.onTap(hammertime, handler));
+		jsHandlersMap.put(EventType.TAP, HammerGwt.onTap(hammertime, handler));
 	}
 
 	public void registerDragHandler(HammerDragHandler handler) {
-		jsHandlersMap.put(EventType.DRAG, HammerGWT.onDrag(hammertime, handler));
+		jsHandlersMap.put(EventType.DRAG, HammerGwt.onDrag(hammertime, handler));
 	}
 
 	public void registerHoldHandler(HammerHoldHandler handler) {
-		jsHandlersMap.put(EventType.HOLD, HammerGWT.onHold(hammertime, handler));
+		jsHandlersMap.put(EventType.HOLD, HammerGwt.onHold(hammertime, handler));
 	}
 
 	public void registerDoubleTapHandler(HammerDoubleTapHandler handler) {
-		jsHandlersMap.put(EventType.DOUBLETAP, HammerGWT.onDoubleTap(hammertime, handler));
+		jsHandlersMap.put(EventType.DOUBLETAP, HammerGwt.onDoubleTap(hammertime, handler));
 	}
 
 	public void registerSwipeHandler(HammerSwipeHandler handler) {
-		jsHandlersMap.put(EventType.SWIPE, HammerGWT.onSwipe(hammertime, handler));
+		jsHandlersMap.put(EventType.SWIPE, HammerGwt.onSwipe(hammertime, handler));
 	}
 
 	public void registerTransformHandler(HammerTransformHandler handler) {
-		jsHandlersMap.put(EventType.TRANSFORM, HammerGWT.onTransform(hammertime, handler));
+		jsHandlersMap.put(EventType.TRANSFORM, HammerGwt.onTransform(hammertime, handler));
 	}
 
 	public void registerRotateHandler(HammerRotateHandler handler) {
-		jsHandlersMap.put(EventType.ROTATE, HammerGWT.onRotate(hammertime, handler));
+		jsHandlersMap.put(EventType.ROTATE, HammerGwt.onRotate(hammertime, handler));
 	}
 
 	public void registerTouchHandler(HammerTouchHandler handler) {
-		jsHandlersMap.put(EventType.TOUCH, HammerGWT.onTouch(hammertime, handler));
+		jsHandlersMap.put(EventType.TOUCH, HammerGwt.onTouch(hammertime, handler));
 	}
 
 	public void registerReleaseHandler(HammerReleaseHandler handler) {
-		jsHandlersMap.put(EventType.RELEASE, HammerGWT.onRelease(hammertime, handler));
+		jsHandlersMap.put(EventType.RELEASE, HammerGwt.onRelease(hammertime, handler));
 	}
 
 	public void registerGestureHandler(HammerGestureHandler handler) {
-		jsHandlersMap.put(EventType.GESTURE, HammerGWT.onGesture(hammertime, handler));
+		jsHandlersMap.put(EventType.GESTURE, HammerGwt.onGesture(hammertime, handler));
 	}
 
 	/**
@@ -141,7 +141,7 @@ public abstract class HammerWidget implements IsWidget {
 			return;
 		}
 
-		HammerGWT.off(hammertime, eventType, (NativeHammmerHandler) jsHandlersMap.remove(eventType));
+		HammerGwt.off(hammertime, eventType, (NativeHammmerHandler) jsHandlersMap.remove(eventType));
 	}
 
 	@Override
