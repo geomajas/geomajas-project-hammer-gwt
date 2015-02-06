@@ -1,7 +1,7 @@
 <!--
   ~ This is part of Geomajas, a GIS framework, http://www.geomajas.org/.
   ~
-  ~ Copyright 2008-2014 Geosparc nv, http://www.geosparc.com/, Belgium.
+  ~ Copyright 2008-2015 Geosparc nv, http://www.geosparc.com/, Belgium.
   ~
   ~ The program is available in open source according to the Apache
   ~ License, Version 2.0. All contributions in this program are covered
@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.geomajas</groupId>
 		<artifactId>geomajas-doc-parent</artifactId>
-		<version>2.0.0</version>
+		<version>2.4.0</version>
 	</parent>
 
 	<groupId>org.geomajas.project</groupId>
@@ -22,8 +22,8 @@
     <version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Hammer GWT wrapper documentation</name>
-	<description>Hammer GWT wrapper documentation</description>
+	<name>Geomajas Project Hammer GWT - Documentation</name>
+	<description>Geomajas Project Hammer GWT - Documentation</description>
 
 	<properties>
 		<listing.sourceDirectory>${basedir}/..</listing.sourceDirectory>
