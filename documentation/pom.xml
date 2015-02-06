@@ -22,8 +22,8 @@
     <version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Hammer GWT wrapper documentation</name>
-	<description>Hammer GWT wrapper documentation</description>
+	<name>Geomajas Project Hammer GWT - Documentation</name>
+	<description>Geomajas Project Hammer GWT - Documentation</description>
 
 	<properties>
 		<listing.sourceDirectory>${basedir}/..</listing.sourceDirectory>

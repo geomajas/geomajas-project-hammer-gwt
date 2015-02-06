@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <artifactId>geomajas-project-hammer-gwt-all</artifactId>
         <groupId>org.geomajas.hammergwt</groupId>
+        <artifactId>geomajas-project-hammer-gwt-all</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-
     <artifactId>geomajas-project-hammer-gwt</artifactId>
-    <description>Hammer GWT implementation</description>
+	<name>Geomajas Project Hammer GWT - Implementation</name>
+	<description>Geomajas Project Hammer GWT - Implementation</description>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- Google dependencies -->
@@ -20,18 +21,17 @@
             <artifactId>gwt-user</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
             <scope>runtime</scope>
         </dependency>
 
+		<!-- Geomajas dependencies -->
         <dependency>
             <groupId>org.geomajas.project</groupId>
             <artifactId>geomajas-project-api-annotation</artifactId>
         </dependency>
-
     </dependencies>
 
     <profiles>
@@ -62,6 +62,4 @@
             </activation>
         </profile>
     </profiles>
-
-
 </project>
