@@ -8,5 +8,5 @@ GWT
     licenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
 
 hammer.js
-    licenseName: MIT Copyright (C) 2011-2015 by Jorik Tangelder (Eight Media)
+    licenseName: MIT Copyright (C) 2011-2014 by Jorik Tangelder (Eight Media)
     licenseUrl: https://github.com/EightMedia/hammer.js/blob/master/LICENSE
