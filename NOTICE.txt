@@ -1,5 +1,5 @@
 Hammer GWT wrapper project
-Copyright (C) 2008-2014 (Geosparc nv)
+Copyright (C) 2008-2015 (Geosparc nv)
 
 Copyright/license notices for dependent projects:
 
